@@ -1,0 +1,1 @@
+import{f as a,a as e}from"../chunks/Bb1vKxF8.js";import"../chunks/DUuCc6JK.js";import{n as r}from"../chunks/DEs7I_lf.js";var i=a("<h1>Welcome to your Svelte static site!</h1> <p>This site is ready for static hosting and Decap CMS integration.</p>",1);function m(t){var o=i();r(2),e(t,o)}export{m as component};
