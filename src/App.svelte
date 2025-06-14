@@ -4,7 +4,7 @@
 
 <main>
   <div class="container">
-    <h1>Welcome to Indigo Room</h1>
+    <h1>Test Change</h1>
     <p>A beautiful static page built with Svelte</p>
     <div class="features">
       <div class="feature">
