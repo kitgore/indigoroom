@@ -1,79 +1,57 @@
 <script>
-  // Your component logic here
+  import FrameAnimation from './lib/FrameAnimation.svelte';
+  import star1 from './assets/star1.png';
+  import star2 from './assets/star2.png';
+  import star3 from './assets/star3.png';
+  import logo from './assets/irTypeLogo.svg';
+
+  const frames = [star1, star2, star3];
 </script>
 
 <main>
-  <div class="container">
-    <h1>Test Change 2</h1>
-    <p>A beautiful static page built with Svelte</p>
-    <div class="features">
-      <div class="feature">
-        <h2>Fast</h2>
-        <p>Built with modern web technologies</p>
-      </div>
-      <div class="feature">
-        <h2>Responsive</h2>
-        <p>Looks great on all devices</p>
-      </div>
-      <div class="feature">
-        <h2>Static</h2>
-        <p>Hosted on GitHub Pages</p>
-      </div>
-    </div>
+  <header>
+    <img src={logo} alt="indigo room" />
+  </header>
+  <div class="animation-container">
+    <FrameAnimation {frames} frameRate={150} />
   </div>
 </main>
 
 <style>
   main {
-    text-align: center;
-    padding: 1em;
-    max-width: 240px;
-    margin: 0 auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #EBEBEB;
+    margin: 0;
+    padding: 0;
   }
 
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
+  header {
+    position: absolute;
+    top: 30px;
+    left: 30px;
   }
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
+  header img {
+    height: 100px;
+    width: auto;
   }
 
-  h1 {
-    color: #4a4a4a;
-    font-size: 2.5em;
-    margin-bottom: 1rem;
+  .animation-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
   }
 
-  .features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-
-  .feature {
-    padding: 1.5rem;
-    border-radius: 8px;
-    background: #f5f5f5;
-    transition: transform 0.2s;
-  }
-
-  .feature:hover {
-    transform: translateY(-5px);
-  }
-
-  h2 {
-    color: #2c3e50;
-    margin-bottom: 0.5rem;
-  }
-
-  p {
-    color: #666;
-    line-height: 1.5;
+  .animation-container :global(.frame-container) {
+    transform: scale(0.65);
   }
 </style>
