@@ -9,11 +9,18 @@
   const frames = [star1, star2, star3];
 
   const navLinks = [
-    { label: 'hours', number: '01' },
-    { label: 'menu', number: '02'},
-    { label: 'parking', number: '03' },
-    { label: 'about', number: '04' }
+    { label: 'hours', number: '01', id: 'hours' },
+    { label: 'menu', number: '02', id: 'menu' },
+    { label: 'parking', number: '03', id: 'parking' },
+    { label: 'about', number: '04', id: 'about' }
   ];
+
+  function scrollToSection(id) {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 </script>
 
 <main>
@@ -22,9 +29,12 @@
       <img src={logo} alt="indigo room" />
       <nav>
         {#each navLinks as link}
-          <div class="nav-row">
+          <button 
+            class="nav-row" 
+            on:click={() => scrollToSection(link.id)}
+          >
             {link.label} <span class="nav-num">({link.number})</span>
-          </div>
+          </button>
         {/each}
       </nav>
     </header>
@@ -33,13 +43,64 @@
     <div class="animation-container">
       <FrameAnimation {frames} frameRate={150} />
     </div>
-    <div class="dummy-content">
-      <h2>Section 1</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <h2>Section 2</h2>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <h2>Section 3</h2>
-      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    <div class="sections">
+      <section id="hours" class="content-section">
+        <h2>hours</h2>
+        <div class="hours-grid">
+          <div class="day">
+            <h3>Monday - Thursday</h3>
+            <p>4:00 PM - 12:00 AM</p>
+          </div>
+          <div class="day">
+            <h3>Friday - Saturday</h3>
+            <p>4:00 PM - 2:00 AM</p>
+          </div>
+          <div class="day">
+            <h3>Sunday</h3>
+            <p>4:00 PM - 12:00 AM</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="menu" class="content-section">
+        <h2>menu</h2>
+        <div class="menu-grid">
+          <div class="menu-category">
+            <h3>Cocktails</h3>
+            <ul>
+              <li>Classic Old Fashioned</li>
+              <li>Manhattan</li>
+              <li>Negroni</li>
+              <li>Martini</li>
+            </ul>
+          </div>
+          <div class="menu-category">
+            <h3>Wine</h3>
+            <ul>
+              <li>House Red</li>
+              <li>House White</li>
+              <li>Sparkling</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="parking" class="content-section">
+        <h2>Parking</h2>
+        <div class="parking-info">
+          <p>Street parking available on Main Street and adjacent streets.</p>
+          <p>Public parking garage located at 123 Main Street (2 blocks away).</p>
+          <p>Valet service available Friday and Saturday nights.</p>
+        </div>
+      </section>
+
+      <section id="about" class="content-section">
+        <h2>About</h2>
+        <div class="about-content">
+          <p>Welcome to Indigo Room, a sophisticated cocktail lounge in the heart of the city. Our intimate space offers a carefully curated selection of classic and contemporary cocktails, fine wines, and small plates.</p>
+          <p>Established in 2024, we pride ourselves on providing an exceptional experience with attention to detail in every aspect of our service.</p>
+        </div>
+      </section>
     </div>
   </div>
 </main>
@@ -102,6 +163,17 @@
     font-family: 'Inter', 'Arial', sans-serif;
     font-weight: 500;
     margin-bottom: 2px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    transition: text-decoration 0.3s ease;
+  }
+
+  .nav-row:hover {
+    text-decoration: underline;
   }
 
   .nav-num {
@@ -122,22 +194,66 @@
     transform: scale(0.65);
   }
 
-  .dummy-content {
+  .sections {
     padding: 50px;
     max-width: 800px;
     margin: 0 auto;
   }
 
-  .dummy-content h2 {
-    font-size: 2em;
-    margin: 2em 0 1em;
+  .content-section {
+    margin-bottom: 100px;
+  }
+
+  .content-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
     color: #111;
   }
 
-  .dummy-content p {
+  .hours-grid {
+    display: grid;
+    gap: 2em;
+  }
+
+  .day h3 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    color: #4a74c9;
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3em;
+  }
+
+  .menu-category h3 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    color: #4a74c9;
+  }
+
+  .menu-category ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .menu-category li {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    color: #333;
+  }
+
+  .parking-info p {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    color: #333;
+  }
+
+  .about-content p {
     font-size: 1.2em;
     line-height: 1.6;
+    margin-bottom: 1.5em;
     color: #333;
-    margin-bottom: 2em;
   }
 </style>
