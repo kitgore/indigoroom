@@ -4,7 +4,7 @@
   import star2 from './assets/star2.png';
   import star3 from './assets/star3.png';
   import logo from './assets/irTypeLogo.svg';
-  import paperBg from './assets/Basik-Paper.png';
+  import { onMount } from 'svelte';
 
   const frames = [star1, star2, star3];
 
@@ -15,22 +15,70 @@
     { label: 'about', number: '04', id: 'about' }
   ];
 
+  let activeSection = '';
+
   function scrollToSection(id) {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   }
+
+  function scrollToTop() {
+    const content = document.querySelector('.content');
+    if (content) {
+      content.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  function updateActiveSection() {
+    const sections = navLinks.map(link => link.id);
+    const content = document.querySelector('.content');
+    
+    if (!content) return;
+
+    const scrollTop = content.scrollTop;
+    const windowHeight = content.clientHeight;
+
+    // Check if we're at the top (animation section)
+    if (scrollTop < windowHeight * 0.5) {
+      activeSection = '';
+      return;
+    }
+
+    // Find which section is currently in view
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const section = document.getElementById(sections[i]);
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        const contentRect = content.getBoundingClientRect();
+        
+        if (rect.top <= contentRect.top + windowHeight * 0.3) {
+          activeSection = sections[i];
+          break;
+        }
+      }
+    }
+  }
+
+  onMount(() => {
+    const content = document.querySelector('.content');
+    if (content) {
+      content.addEventListener('scroll', updateActiveSection);
+      updateActiveSection(); // Initial check
+    }
+  });
 </script>
 
 <main>
   <div class="sidebar">
     <header>
-      <img src={logo} alt="indigo room" />
+      <img src={logo} alt="indigo room" on:click={scrollToTop} />
       <nav>
         {#each navLinks as link}
           <button 
             class="nav-row" 
+            class:active={activeSection === link.id}
             on:click={() => scrollToSection(link.id)}
           >
             {link.label} <span class="nav-num">({link.number})</span>
@@ -48,16 +96,10 @@
         <h2>hours</h2>
         <div class="hours-grid">
           <div class="day">
-            <h3>Monday - Thursday</h3>
-            <p>4:00 PM - 12:00 AM</p>
-          </div>
-          <div class="day">
-            <h3>Friday - Saturday</h3>
-            <p>4:00 PM - 2:00 AM</p>
-          </div>
-          <div class="day">
-            <h3>Sunday</h3>
-            <p>4:00 PM - 12:00 AM</p>
+            <h3>thurs: 7am-3pm</h3>
+            <h3>fri: 7am-3pm</h3>
+            <h3>sat: 7am-3pm</h3>
+            <h3>sun: 7am-3pm</h3>
           </div>
         </div>
       </section>
@@ -147,6 +189,12 @@
     height: 100px;
     width: auto;
     margin-bottom: 24px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+
+  header img:hover {
+    opacity: 0.8;
   }
 
   nav {
@@ -170,10 +218,19 @@
     text-align: left;
     width: 100%;
     transition: text-decoration 0.3s ease;
+    outline: none;
   }
 
   .nav-row:hover {
     text-decoration: underline;
+  }
+
+  .nav-row.active {
+    text-decoration: underline;
+  }
+
+  .nav-row:focus {
+    outline: none;
   }
 
   .nav-num {
@@ -213,6 +270,7 @@
   .hours-grid {
     display: grid;
     gap: 2em;
+    margin-left: 1rem;
   }
 
   .day h3 {
