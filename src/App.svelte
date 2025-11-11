@@ -8,6 +8,12 @@
   import kitgore from './assets/kitgore-export2.svg';
   import { onMount } from 'svelte';
 
+  // Import JSON content files
+  import hoursData from './content/hours.json';
+  import menuData from './content/menu.json';
+  import aboutData from './content/about.json';
+  import settingsData from './content/settings.json';
+
   const frames = [star1, star2, star3];
 
   const navLinks = [
@@ -72,6 +78,11 @@
   });
 </script>
 
+<svelte:head>
+  <title>{settingsData.title}</title>
+  <meta name="description" content={settingsData.description} />
+</svelte:head>
+
 <main>
   <div class="sidebar">
     <header>
@@ -98,10 +109,9 @@
         <h2>hours</h2>
         <div class="hours-grid">
           <div class="day">
-            <h3>thurs: 7am-3pm</h3>
-            <h3>fri: 7am-3pm</h3>
-            <h3>sat: 7am-3pm</h3>
-            <h3>sun: 7am-3pm</h3>
+            {#each hoursData.hours as hour}
+              <h3>{hour.day.toLowerCase()}: {hour.time}</h3>
+            {/each}
           </div>
         </div>
       </section>
@@ -109,23 +119,24 @@
       <section id="menu" class="content-section">
         <h2>menu</h2>
         <div class="menu-grid">
-          <div class="menu-category">
-            <h3>Cocktails</h3>
-            <ul>
-              <li>Classic Old Fashioned</li>
-              <li>Manhattan</li>
-              <li>Negroni</li>
-              <li>Martini</li>
-            </ul>
-          </div>
-          <div class="menu-category">
-            <h3>Wine</h3>
-            <ul>
-              <li>House Red</li>
-              <li>House White</li>
-              <li>Sparkling</li>
-            </ul>
-          </div>
+          {#each menuData.categories as category}
+            <div class="menu-category">
+              <h3>{category.name}</h3>
+              <ul>
+                {#each category.items as item}
+                  <li>
+                    <span class="item-name">{item.name}</span>
+                    {#if item.description}
+                      <span class="item-description">{item.description}</span>
+                    {/if}
+                    {#if item.price}
+                      <span class="item-price">{item.price}</span>
+                    {/if}
+                  </li>
+                {/each}
+              </ul>
+            </div>
+          {/each}
         </div>
       </section>
 
@@ -135,10 +146,11 @@
       </section>
 
       <section id="about" class="content-section">
-        <h2>About</h2>
+        <h2>{aboutData.title}</h2>
         <div class="about-content">
-          <p>Welcome to Indigo Room, a sophisticated cocktail lounge in the heart of the city. Our intimate space offers a carefully curated selection of classic and contemporary cocktails, fine wines, and small plates.</p>
-          <p>Established in 2024, we pride ourselves on providing an exceptional experience with attention to detail in every aspect of our service.</p>
+          {#each aboutData.description.split('\n\n') as paragraph}
+            <p>{paragraph}</p>
+          {/each}
         </div>
       </section>
     </div>
@@ -405,13 +417,27 @@
     font-size: 1.2em;
     margin-bottom: 0.5em;
     color: #333;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
   }
 
-  .parking-info p {
-    font-size: 1.2em;
-    margin-bottom: 1em;
-    color: #333;
+  .item-name {
+    font-weight: 500;
   }
+
+  .item-description {
+    font-size: 0.9em;
+    color: #666;
+    font-style: italic;
+  }
+
+  .item-price {
+    font-size: 0.95em;
+    color: #4a74c9;
+    font-weight: 500;
+  }
+
 
   .parking-image {
     width: 102%;

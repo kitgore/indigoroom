@@ -1,0 +1,49 @@
+{
+  "categories": [
+    {
+      "name": "Cocktails",
+      "items": [
+        {
+          "name": "Classic Old Fashioned",
+          "description": "",
+          "price": ""
+        },
+        {
+          "name": "Manhattan",
+          "description": "",
+          "price": ""
+        },
+        {
+          "name": "Negroni",
+          "description": "",
+          "price": ""
+        },
+        {
+          "name": "Martini",
+          "description": "",
+          "price": ""
+        }
+      ]
+    },
+    {
+      "name": "Wine",
+      "items": [
+        {
+          "name": "House Red",
+          "description": "",
+          "price": ""
+        },
+        {
+          "name": "House White",
+          "description": "",
+          "price": ""
+        },
+        {
+          "name": "Sparkling",
+          "description": "",
+          "price": ""
+        }
+      ]
+    }
+  ]
+}

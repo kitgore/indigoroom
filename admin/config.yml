@@ -2,16 +2,58 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "static/uploads"
-public_folder: "/uploads"
+# For GitHub Pages, you might need to adjust this based on your repo name
+site_url: https://yourusername.github.io/indigoroom
+display_url: https://yourusername.github.io/indigoroom
+
+media_folder: "src/assets/uploads"
+public_folder: "/src/assets/uploads"
 
 collections:
-  - name: "pages"
-    label: "Pages"
+  - name: "content"
+    label: "Site Content"
     files:
-      - label: "Home Page"
-        name: "home"
-        file: "src/content/home.md"
+      - label: "Hours"
+        name: "hours"
+        file: "src/content/hours.json"
+        fields:
+          - label: "Hours"
+            name: "hours"
+            widget: "list"
+            fields:
+              - { label: "Day", name: "day", widget: "string" }
+              - { label: "Time", name: "time", widget: "string" }
+      
+      - label: "Menu"
+        name: "menu"
+        file: "src/content/menu.json"
+        fields:
+          - label: "Menu Categories"
+            name: "categories"
+            widget: "list"
+            fields:
+              - { label: "Category Name", name: "name", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Item Name", name: "name", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text", required: false }
+                  - { label: "Price", name: "price", widget: "string", required: false }
+      
+      - label: "About"
+        name: "about"
+        file: "src/content/about.json"
         fields:
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Body", name: "body", widget: "markdown" } 
+          - { label: "Description", name: "description", widget: "markdown" }
+      
+      - label: "Site Settings"
+        name: "settings"
+        file: "src/content/settings.json"
+        fields:
+          - { label: "Site Title", name: "title", widget: "string" }
+          - { label: "Site Description", name: "description", widget: "text" }
+          - { label: "Contact Email", name: "email", widget: "string", required: false }
+          - { label: "Phone", name: "phone", widget: "string", required: false }
+          - { label: "Address", name: "address", widget: "text", required: false } 

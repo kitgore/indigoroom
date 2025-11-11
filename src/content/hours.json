@@ -1,0 +1,20 @@
+{
+  "hours": [
+    {
+      "day": "Thursday",
+      "time": "7am-3pm"
+    },
+    {
+      "day": "Friday", 
+      "time": "7am-3pm"
+    },
+    {
+      "day": "Saturday",
+      "time": "7am-3pm"
+    },
+    {
+      "day": "Sunday",
+      "time": "7am-3pm"
+    }
+  ]
+}
