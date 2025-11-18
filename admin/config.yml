@@ -1,6 +1,6 @@
 # Use DecapBridge classic auth (required)
 backend:
-  name: git-gateway
+  name: github
   repo: kitgore/indigoroom
   branch: main
   identity_url: https://auth.decapbridge.com/sites/a554038d-d544-44e5-9ac7-09ba62b247a3
