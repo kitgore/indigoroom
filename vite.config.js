@@ -15,6 +15,12 @@ export default defineConfig({
           mkdirSync('dist/admin', { recursive: true })
           copyFileSync('admin.html', 'dist/admin/index.html')
           copyFileSync('admin/config.yml', 'dist/admin/config.yml')
+          // Try to copy _headers if it exists
+          try {
+            copyFileSync('admin/_headers', 'dist/admin/_headers')
+          } catch (e) {
+            // _headers file doesn't exist, that's ok
+          }
         } catch (error) {
           console.warn('Could not copy admin files:', error.message)
         }

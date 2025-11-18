@@ -1,102 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Indigo Room - Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Manager</title>
   <link rel="icon" type="image/svg+xml" href="../vite.svg" />
 </head>
 <body>
+  <!-- Decap CMS requires this specific container -->
   <div id="nc-root"></div>
+  
+  <!-- Load Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  
+  <!-- Ensure proper initialization -->
   <script>
+    // Set manual init to prevent auto-initialization conflicts
     window.CMS_MANUAL_INIT = true;
     
-    // Wait for CMS to be ready
-    document.addEventListener('DOMContentLoaded', function() {
-      CMS.init({
-        config: {
-          backend: {
-            name: 'git-gateway',
-            branch: 'main'
-          },
-          site_url: 'https://yourusername.github.io/indigoroom',
-          display_url: 'https://yourusername.github.io/indigoroom',
-          media_folder: 'src/assets/uploads',
-          public_folder: '/indigoroom/src/assets/uploads',
-          collections: [
-            {
-              name: 'site_content',
-              label: 'Site Content',
-              files: [
-                {
-                  label: 'Hours',
-                  name: 'hours',
-                  file: 'src/content/hours.json',
-                  fields: [
-                    {
-                      label: 'Hours',
-                      name: 'hours',
-                      widget: 'list',
-                      fields: [
-                        { label: 'Day', name: 'day', widget: 'string' },
-                        { label: 'Time', name: 'time', widget: 'string' }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  label: 'Menu',
-                  name: 'menu',
-                  file: 'src/content/menu.json',
-                  fields: [
-                    {
-                      label: 'Menu Categories',
-                      name: 'categories',
-                      widget: 'list',
-                      fields: [
-                        { label: 'Category Name', name: 'name', widget: 'string' },
-                        {
-                          label: 'Items',
-                          name: 'items',
-                          widget: 'list',
-                          fields: [
-                            { label: 'Item Name', name: 'name', widget: 'string' },
-                            { label: 'Description', name: 'description', widget: 'text', required: false },
-                            { label: 'Price', name: 'price', widget: 'string', required: false }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  label: 'About',
-                  name: 'about',
-                  file: 'src/content/about.json',
-                  fields: [
-                    { label: 'Title', name: 'title', widget: 'string' },
-                    { label: 'Description', name: 'description', widget: 'markdown' }
-                  ]
-                },
-                {
-                  label: 'Site Settings',
-                  name: 'settings',
-                  file: 'src/content/settings.json',
-                  fields: [
-                    { label: 'Site Title', name: 'title', widget: 'string' },
-                    { label: 'Site Description', name: 'description', widget: 'text' },
-                    { label: 'Contact Email', name: 'email', widget: 'string', required: false },
-                    { label: 'Phone', name: 'phone', widget: 'string', required: false },
-                    { label: 'Address', name: 'address', widget: 'text', required: false }
-                  ]
-                }
-              ]
+    // Debug function to test config.yml loading
+    async function testConfigLoad() {
+      try {
+        const response = await fetch('./config.yml');
+        const text = await response.text();
+        console.log('Config.yml response status:', response.status);
+        console.log('Config.yml content type:', response.headers.get('content-type'));
+        console.log('Config.yml content preview:', text.substring(0, 200));
+        return response.ok;
+      } catch (error) {
+        console.error('Config.yml fetch error:', error);
+        return false;
+      }
+    }
+    
+    // Wait for DOM and CMS to be ready
+    async function initializeCMS() {
+      if (window.CMS && document.getElementById('nc-root')) {
+        // Test config loading first
+        const configOk = await testConfigLoad();
+        console.log('Config loading test:', configOk ? 'SUCCESS' : 'FAILED');
+        
+        try {
+          // Initialize CMS - it will automatically look for config.yml
+          window.CMS.init();
+          console.log('CMS initialization started');
+        } catch (error) {
+          console.error('CMS initialization error:', error);
+          // Fallback: try again after a short delay
+          setTimeout(() => {
+            try {
+              window.CMS.init();
+              console.log('CMS fallback initialization started');
+            } catch (e) {
+              console.error('CMS fallback initialization failed:', e);
             }
-          ]
+          }, 1000);
         }
-      });
-    });
+      } else {
+        // If CMS or container not ready, try again
+        setTimeout(initializeCMS, 100);
+      }
+    }
+    
+    // Start initialization when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializeCMS);
+    } else {
+      initializeCMS();
+    }
   </script>
 </body>
 </html>

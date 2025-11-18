@@ -2,13 +2,14 @@ backend:
   name: git-gateway
   branch: main
 
-# For GitHub Pages, you might need to adjust this based on your repo name
+# Required for DecapBridge
 site_url: https://yourusername.github.io/indigoroom
 display_url: https://yourusername.github.io/indigoroom
 
 media_folder: "src/assets/uploads"
 public_folder: "/indigoroom/src/assets/uploads"
 
+# Use git media library for GitHub Pages compatibility
 media_library:
   name: git
 
@@ -59,4 +60,4 @@ collections:
           - { label: "Site Description", name: "description", widget: "text" }
           - { label: "Contact Email", name: "email", widget: "string", required: false }
           - { label: "Phone", name: "phone", widget: "string", required: false }
-          - { label: "Address", name: "address", widget: "text", required: false } 
+          - { label: "Address", name: "address", widget: "text", required: false }
