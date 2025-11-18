@@ -4,9 +4,98 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Indigo Room - Admin</title>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <link rel="icon" type="image/svg+xml" href="../vite.svg" />
 </head>
 <body>
   <!-- This div is where the CMS will be rendered -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // Initialize CMS with embedded configuration
+    CMS.init({
+      config: {
+        backend: {
+          name: 'git-gateway',
+          branch: 'main'
+        },
+        site_url: 'https://yourusername.github.io/indigoroom',
+        display_url: 'https://yourusername.github.io/indigoroom',
+        media_folder: 'src/assets/uploads',
+        public_folder: '/indigoroom/src/assets/uploads',
+        media_library: {
+          name: 'git'
+        },
+        collections: [
+          {
+            name: 'content',
+            label: 'Site Content',
+            files: [
+              {
+                label: 'Hours',
+                name: 'hours',
+                file: 'src/content/hours.json',
+                fields: [
+                  {
+                    label: 'Hours',
+                    name: 'hours',
+                    widget: 'list',
+                    fields: [
+                      { label: 'Day', name: 'day', widget: 'string' },
+                      { label: 'Time', name: 'time', widget: 'string' }
+                    ]
+                  }
+                ]
+              },
+              {
+                label: 'Menu',
+                name: 'menu',
+                file: 'src/content/menu.json',
+                fields: [
+                  {
+                    label: 'Menu Categories',
+                    name: 'categories',
+                    widget: 'list',
+                    fields: [
+                      { label: 'Category Name', name: 'name', widget: 'string' },
+                      {
+                        label: 'Items',
+                        name: 'items',
+                        widget: 'list',
+                        fields: [
+                          { label: 'Item Name', name: 'name', widget: 'string' },
+                          { label: 'Description', name: 'description', widget: 'text', required: false },
+                          { label: 'Price', name: 'price', widget: 'string', required: false }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                label: 'About',
+                name: 'about',
+                file: 'src/content/about.json',
+                fields: [
+                  { label: 'Title', name: 'title', widget: 'string' },
+                  { label: 'Description', name: 'description', widget: 'markdown' }
+                ]
+              },
+              {
+                label: 'Site Settings',
+                name: 'settings',
+                file: 'src/content/settings.json',
+                fields: [
+                  { label: 'Site Title', name: 'title', widget: 'string' },
+                  { label: 'Site Description', name: 'description', widget: 'text' },
+                  { label: 'Contact Email', name: 'email', widget: 'string', required: false },
+                  { label: 'Phone', name: 'phone', widget: 'string', required: false },
+                  { label: 'Address', name: 'address', widget: 'text', required: false }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    });
+  </script>
 </body>
 </html> 
