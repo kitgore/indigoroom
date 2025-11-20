@@ -125,12 +125,19 @@
               <ul>
                 {#each category.items as item}
                   <li>
-                    <span class="item-name">{item.name}</span>
+                    <div class="item-row">
+                      <span class="item-name">{item.name}</span>
+                      <div class="item-prices">
+                        {#if item.smallprice}
+                          <span class="item-price small-price">{item.smallprice}</span>
+                        {/if}
+                        {#if item.largeprice}
+                          <span class="item-price large-price">{item.largeprice}</span>
+                        {/if}
+                      </div>
+                    </div>
                     {#if item.description}
                       <span class="item-description">{item.description}</span>
-                    {/if}
-                    {#if item.price}
-                      <span class="item-price">{item.price}</span>
                     {/if}
                   </li>
                 {/each}
@@ -156,87 +163,10 @@
     </div>
     <div class="kitsvg-container">
       <a href="https://kitg.org" target="_blank" rel="noopener noreferrer" class="kitsvg-link">
-        <svg version="1.1" viewBox="0 0 31 28" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
-    <rect x="14" y="0" width="2" height="1" class="pxl" />
-    <rect x="13" y="1" width="1" height="1" class="pxl" />
-    <rect x="16" y="1" width="1" height="1" class="pxl" />
-    <rect x="2" y="2" width="2" height="1" class="pxl" />
-    <rect x="12" y="2" width="1" height="3" class="pxl" />
-    <rect x="17" y="2" width="1" height="2" class="pxl" />
-    <rect x="1" y="3" width="1" height="1" class="pxl" />
-    <rect x="4" y="3" width="1" height="1" class="pxl" />
-    <rect x="0" y="4" width="1" height="5" class="pxl" />
-    <rect x="5" y="4" width="1" height="1" class="pxl" />
-    <rect x="14" y="4" width="2" height="1" class="pxl" />
-    <rect x="18" y="4" width="1" height="7" class="pxl" />
-    <rect x="2" y="5" width="2" height="1" class="pxl" />
-    <rect x="6" y="5" width="1" height="2" class="pxl" />
-    <rect x="11" y="5" width="1" height="9" class="pxl" />
-    <rect x="14" y="5" width="1" height="2" class="pxl" />
-    <rect x="16" y="5" width="1" height="5" class="pxl" />
-    <rect x="2" y="6" width="1" height="2" class="pxl" />
-    <rect x="4" y="6" width="1" height="1" class="pxl" />
-    <rect x="13" y="6" width="1" height="6" class="pxl" />
-    <rect x="5" y="7" width="1" height="3" class="pxl" />
-    <rect x="7" y="7" width="1" height="2" class="pxl" />
-    <rect x="3" y="8" width="1" height="4" class="pxl" />
-    <rect x="1" y="9" width="1" height="3" class="pxl" />
-    <rect x="6" y="9" width="1" height="5" class="pxl" />
-    <rect x="8" y="9" width="1" height="3" class="pxl" />
-    <rect x="15" y="9" width="1" height="3" class="pxl" />
-    <rect x="4" y="11" width="1" height="3" class="pxl" />
-    <rect x="14" y="11" width="1" height="1" class="pxl" />
-    <rect x="17" y="11" width="1" height="1" class="pxl" />
-    <rect x="2" y="12" width="1" height="2" class="pxl" />
-    <rect x="9" y="12" width="1" height="2" class="pxl" />
-    <rect x="16" y="12" width="1" height="3" class="pxl" />
-    <rect x="5" y="13" width="1" height="1" class="pxl" />
-    <rect x="10" y="13" width="1" height="1" class="pxl" />
-    <rect x="3" y="14" width="1" height="1" class="pxl" />
-    <rect x="17" y="14" width="1" height="1" class="pxl" />
-    <rect x="4" y="15" width="1" height="3" class="pxl" />
-    <rect x="14" y="15" width="1" height="1" class="pxl" />
-    <rect x="18" y="15" width="1" height="1" class="pxl" />
-    <rect x="10" y="16" width="1" height="1" class="pxl" />
-    <rect x="13" y="16" width="1" height="3" class="pxl" />
-    <rect x="15" y="16" width="1" height="2" class="pxl" />
-    <rect x="19" y="16" width="1" height="5" class="pxl" />
-    <rect x="9" y="17" width="1" height="3" class="pxl" />
-    <rect x="11" y="17" width="1" height="2" class="pxl" />
-    <rect x="3" y="18" width="1" height="5" class="pxl" />
-    <rect x="15" y="19" width="1" height="2" class="pxl" />
-    <rect x="12" y="20" width="2" height="1" class="pxl" />
-    <rect x="18" y="20" width="1" height="2" class="pxl" />
-    <rect x="23" y="20" width="1" height="5" class="pxl" />
-    <rect x="27" y="20" width="1" height="1" class="pxl" />
-    <rect x="29" y="20" width="1" height="5" class="pxl" />
-    <rect x="10" y="21" width="1" height="1" class="pxl" />
-    <rect x="13" y="21" width="2" height="1" class="pxl" />
-    <rect x="17" y="21" width="1" height="2" class="pxl" />
-    <rect x="20" y="21" width="1" height="1" class="pxl" />
-    <rect x="30" y="21" width="1" height="1" class="pxl" />
-    <rect x="2" y="22" width="1" height="1" class="pxl" />
-    <rect x="4" y="22" width="1" height="2" class="pxl" />
-    <rect x="11" y="22" width="2" height="1" class="pxl" />
-    <rect x="16" y="22" width="1" height="1" class="pxl" />
-    <rect x="21" y="22" width="1" height="2" class="pxl" />
-    <rect x="25" y="22" width="1" height="1" class="pxl" />
-    <rect x="27" y="22" width="1" height="3" class="pxl" />
-    <rect x="1" y="23" width="1" height="3" class="pxl" />
-    <rect x="5" y="23" width="2" height="1" class="pxl" />
-    <rect x="13" y="23" width="3" height="1" class="pxl" />
-    <rect x="24" y="23" width="1" height="1" class="pxl" />
-    <rect x="6" y="24" width="7" height="1" class="pxl" />
-    <rect x="16" y="24" width="1" height="1" class="pxl" />
-    <rect x="20" y="24" width="1" height="1" class="pxl" />
-    <rect x="25" y="24" width="1" height="1" class="pxl" />
-    <rect x="30" y="24" width="1" height="1" class="pxl" />
-    <rect x="7" y="25" width="1" height="1" class="pxl" />
-    <rect x="17" y="25" width="3" height="1" class="pxl" />
-    <rect x="2" y="26" width="1" height="1" class="pxl" />
-    <rect x="6" y="26" width="1" height="1" class="pxl" />
-    <rect x="3" y="27" width="3" height="1" class="pxl" />
+        <svg version="1.1" viewBox="0 0 31 28" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges"> <rect x="14" y="0" width="2" height="1" class="pxl" /> <rect x="13" y="1" width="1" height="1" class="pxl" /> <rect x="16" y="1" width="1" height="1" class="pxl" /> <rect x="2" y="2" width="2" height="1" class="pxl" /> <rect x="12" y="2" width="1" height="3" class="pxl" /> <rect x="17" y="2" width="1" height="2" class="pxl" /> <rect x="1" y="3" width="1" height="1" class="pxl" /> <rect x="4" y="3" width="1" height="1" class="pxl" /> <rect x="0" y="4" width="1" height="5" class="pxl" /> <rect x="5" y="4" width="1" height="1" class="pxl" /> <rect x="14" y="4" width="2" height="1" class="pxl" /> <rect x="18" y="4" width="1" height="7" class="pxl" /> <rect x="2" y="5" width="2" height="1" class="pxl" /> <rect x="6" y="5" width="1" height="2" class="pxl" /> <rect x="11" y="5" width="1" height="9" class="pxl" /> <rect x="14" y="5" width="1" height="2" class="pxl" /> <rect x="16" y="5" width="1" height="5" class="pxl" /> <rect x="2" y="6" width="1" height="2" class="pxl" /> <rect x="4" y="6" width="1" height="1" class="pxl" /> <rect x="13" y="6" width="1" height="6" class="pxl" /> <rect x="5" y="7" width="1" height="3" class="pxl" /> <rect x="7" y="7" width="1" height="2" class="pxl" /> <rect x="3" y="8" width="1" height="4" class="pxl" /> <rect x="1" y="9" width="1" height="3" class="pxl" /> <rect x="6" y="9" width="1" height="5" class="pxl" /> <rect x="8" y="9" width="1" height="3" class="pxl" /> <rect x="15" y="9" width="1" height="3" class="pxl" /> <rect x="4" y="11" width="1" height="3" class="pxl" /> <rect x="14" y="11" width="1" height="1" class="pxl" /> <rect x="17" y="11" width="1" height="1" class="pxl" /> <rect x="2" y="12" width="1" height="2" class="pxl" /> <rect x="9" y="12" width="1" height="2" class="pxl" /> <rect x="16" y="12" width="1" height="3" class="pxl" /> <rect x="5" y="13" width="1" height="1" class="pxl" /> <rect x="10" y="13" width="1" height="1" class="pxl" /> <rect x="3" y="14" width="1" height="1" class="pxl" /> <rect x="17" y="14" width="1" height="1" class="pxl" /> <rect x="4" y="15" width="1" height="3" class="pxl" /> <rect x="14" y="15" width="1" height="1" class="pxl" /> <rect x="18" y="15" width="1" height="1" class="pxl" /> <rect x="10" y="16" width="1" height="1" class="pxl" /> <rect x="13" y="16" width="1" height="3" class="pxl" /> <rect x="15" y="16" width="1" height="2" class="pxl" /> <rect x="19" y="16" width="1" height="5" class="pxl" /> <rect x="9" y="17" width="1" height="3" class="pxl" /> <rect x="11" y="17" width="1" height="2" class="pxl" /> <rect x="3" y="18" width="1" height="5" class="pxl" /> <rect x="15" y="19" width="1" height="2" class="pxl" /> <rect x="12" y="20" width="2" height="1" class="pxl" /> <rect x="18" y="20" width="1" height="2" class="pxl" /> <rect x="23" y="20" width="1" height="5" class="pxl" /> <rect x="27" y="20" width="1" height="1" class="pxl" /> <rect x="29" y="20" width="1" height="5" class="pxl" /> <rect x="10" y="21" width="1" height="1" class="pxl" /> <rect x="13" y="21" width="2" height="1" class="pxl" /> <rect x="17" y="21" width="1" height="2" class="pxl" /> <rect x="20" y="21" width="1" height="1" class="pxl" /> <rect x="30" y="21" width="1" height="1" class="pxl" /> <rect x="2" y="22" width="1" height="1" class="pxl" /> <rect x="4" y="22" width="1" height="2" class="pxl" /> <rect x="11" y="22" width="2" height="1" class="pxl" /> <rect x="16" y="22" width="1" height="1" class="pxl" /> <rect x="21" y="22" width="1" height="2" class="pxl" /> <rect x="25" y="22" width="1" height="1" class="pxl" /> <rect x="27" y="22" width="1" height="3" class="pxl" /> <rect x="1" y="23" width="1" height="3" class="pxl" /> <rect x="5" y="23" width="2" height="1" class="pxl" /> <rect x="13" y="23" width="3" height="1" class="pxl" /> <rect x="24" y="23" width="1" height="1" class="pxl" /> <rect x="6" y="24" width="7" height="1" class="pxl" /> <rect x="16" y="24" width="1" height="1" class="pxl" /> <rect x="20" y="24" width="1" height="1" class="pxl" /> <rect x="25" y="24" width="1" height="1" class="pxl" /> <rect x="30" y="24" width="1" height="1" class="pxl" /> <rect x="7" y="25" width="1" height="1" class="pxl" /> <rect x="17" y="25" width="3" height="1" class="pxl" /> <rect x="2" y="26" width="1" height="1" class="pxl" /> <rect x="6" y="26" width="1" height="1" class="pxl" /> <rect x="3" y="27" width="3" height="1" class="pxl" />
      </svg>
+     <!-- <svg version="1.1" viewBox="0 0 148 55" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges"> <rect x="101" y="0" width="14" height="3" class="pxl"  /> <rect x="68" y="1" width="8" height="3" class="pxl"  /> <rect x="85" y="1" width="4" height="3" class="pxl"  /> <rect x="97" y="1" width="4" height="3" class="pxl"  /> <rect x="115" y="1" width="4" height="3" class="pxl"  /> <rect x="129" y="1" width="10" height="3" class="pxl"  /> <rect x="66" y="2" width="2" height="3" class="pxl"  /> <rect x="76" y="2" width="1" height="8" class="pxl"  /> <rect x="82" y="2" width="3" height="3" class="pxl"  /> <rect x="89" y="2" width="1" height="4" class="pxl"  /> <rect x="94" y="2" width="3" height="3" class="pxl"  /> <rect x="119" y="2" width="2" height="6" class="pxl"  /> <rect x="124" y="2" width="5" height="3" class="pxl"  /> <rect x="139" y="2" width="3" height="3" class="pxl"  /> <rect x="45" y="3" width="16" height="3" class="pxl"  /> <rect x="65" y="3" width="1" height="11" class="pxl"  /> <rect x="81" y="3" width="1" height="4" class="pxl"  /> <rect x="90" y="3" width="4" height="3" class="pxl"  /> <rect x="121" y="3" width="3" height="3" class="pxl"  /> <rect x="142" y="3" width="1" height="5" class="pxl"  /> <rect x="41" y="4" width="4" height="3" class="pxl"  /> <rect x="61" y="4" width="2" height="4" class="pxl"  /> <rect x="64" y="4" width="1" height="8" class="pxl"  /> <rect x="74" y="4" width="2" height="1" class="pxl"  /> <rect x="77" y="4" width="1" height="24" class="pxl"  /> <rect x="80" y="4" width="1" height="5" class="pxl"  /> <rect x="85" y="4" width="1" height="1" class="pxl"  /> <rect x="88" y="4" width="1" height="1" class="pxl"  /> <rect x="97" y="4" width="1" height="1" class="pxl"  /> <rect x="118" y="4" width="1" height="7" class="pxl"  /> <rect x="129" y="4" width="1" height="1" class="pxl"  /> <rect x="138" y="4" width="1" height="1" class="pxl"  /> <rect x="143" y="4" width="1" height="10" class="pxl"  /> <rect x="38" y="5" width="3" height="3" class="pxl"  /> <rect x="63" y="5" width="1" height="8" class="pxl"  /> <rect x="66" y="5" width="1" height="10" class="pxl"  /> <rect x="75" y="5" width="1" height="2" class="pxl"  /> <rect x="79" y="5" width="1" height="13" class="pxl"  /> <rect x="82" y="5" width="1" height="1" class="pxl"  /> <rect x="94" y="5" width="1" height="1" class="pxl"  /> <rect x="124" y="5" width="1" height="1" class="pxl"  /> <rect x="141" y="5" width="1" height="1" class="pxl"  /> <rect x="144" y="5" width="1" height="8" class="pxl"  /> <rect x="37" y="6" width="1" height="4" class="pxl"  /> <rect x="45" y="6" width="3" height="1" class="pxl"  /> <rect x="57" y="6" width="4" height="1" class="pxl"  /> <rect x="78" y="6" width="1" height="17" class="pxl"  /> <rect x="90" y="6" width="3" height="2" class="pxl"  /> <rect x="104" y="6" width="3" height="4" class="pxl"  /> <rect x="36" y="7" width="1" height="15" class="pxl"  /> <rect x="41" y="7" width="1" height="1" class="pxl"  /> <rect x="60" y="7" width="1" height="1" class="pxl"  /> <rect x="93" y="7" width="1" height="10" class="pxl"  /> <rect x="101" y="7" width="3" height="4" class="pxl"  /> <rect x="107" y="7" width="1" height="2" class="pxl"  /> <rect x="117" y="7" width="1" height="8" class="pxl"  /> <rect x="145" y="7" width="1" height="5" class="pxl"  /> <rect x="29" y="8" width="5" height="4" class="pxl"  /> <rect x="35" y="8" width="1" height="7" class="pxl"  /> <rect x="38" y="8" width="1" height="1" class="pxl"  /> <rect x="62" y="8" width="1" height="1" class="pxl"  /> <rect x="91" y="8" width="2" height="1" class="pxl"  /> <rect x="100" y="8" width="1" height="3" class="pxl"  /> <rect x="119" y="8" width="1" height="2" class="pxl"  /> <rect x="19" y="9" width="4" height="3" class="pxl"  /> <rect x="28" y="9" width="1" height="4" class="pxl"  /> <rect x="34" y="9" width="1" height="4" class="pxl"  /> <rect x="92" y="9" width="1" height="5" class="pxl"  /> <rect x="94" y="9" width="1" height="30" class="pxl"  /> <rect x="99" y="9" width="1" height="1" class="pxl"  /> <rect x="116" y="9" width="1" height="6" class="pxl"  /> <rect x="17" y="10" width="2" height="3" class="pxl"  /> <rect x="23" y="10" width="3" height="3" class="pxl"  /> <rect x="27" y="10" width="1" height="34" class="pxl"  /> <rect x="62" y="10" width="1" height="4" class="pxl"  /> <rect x="104" y="10" width="1" height="1" class="pxl"  /> <rect x="114" y="10" width="2" height="5" class="pxl"  /> <rect x="6" y="11" width="5" height="3" class="pxl"  /> <rect x="16" y="11" width="1" height="9" class="pxl"  /> <rect x="26" y="11" width="1" height="31" class="pxl"  /> <rect x="61" y="11" width="1" height="4" class="pxl"  /> <rect x="67" y="11" width="1" height="5" class="pxl"  /> <rect x="113" y="11" width="1" height="5" class="pxl"  /> <rect x="142" y="11" width="1" height="4" class="pxl"  /> <rect x="4" y="12" width="2" height="3" class="pxl"  /> <rect x="11" y="12" width="1" height="3" class="pxl"  /> <rect x="15" y="12" width="1" height="14" class="pxl"  /> <rect x="19" y="12" width="1" height="1" class="pxl"  /> <rect x="29" y="12" width="1" height="1" class="pxl"  /> <rect x="37" y="12" width="1" height="20" class="pxl"  /> <rect x="58" y="12" width="3" height="3" class="pxl"  /> <rect x="112" y="12" width="1" height="4" class="pxl"  /> <rect x="118" y="12" width="5" height="3" class="pxl"  /> <rect x="141" y="12" width="1" height="4" class="pxl"  /> <rect x="3" y="13" width="1" height="7" class="pxl"  /> <rect x="12" y="13" width="3" height="6" class="pxl"  /> <rect x="17" y="13" width="1" height="1" class="pxl"  /> <rect x="24" y="13" width="2" height="2" class="pxl"  /> <rect x="43" y="13" width="2" height="4" class="pxl"  /> <rect x="52" y="13" width="6" height="3" class="pxl"  /> <rect x="68" y="13" width="1" height="2" class="pxl"  /> <rect x="95" y="13" width="1" height="23" class="pxl"  /> <rect x="109" y="13" width="3" height="3" class="pxl"  /> <rect x="123" y="13" width="1" height="6" class="pxl"  /> <rect x="140" y="13" width="1" height="4" class="pxl"  /> <rect x="2" y="14" width="1" height="14" class="pxl"  /> <rect x="6" y="14" width="1" height="1" class="pxl"  /> <rect x="10" y="14" width="1" height="1" class="pxl"  /> <rect x="41" y="14" width="2" height="3" class="pxl"  /> <rect x="45" y="14" width="1" height="2" class="pxl"  /> <rect x="51" y="14" width="1" height="2" class="pxl"  /> <rect x="107" y="14" width="2" height="3" class="pxl"  /> <rect x="138" y="14" width="2" height="3" class="pxl"  /> <rect x="4" y="15" width="1" height="2" class="pxl"  /> <rect x="25" y="15" width="1" height="13" class="pxl"  /> <rect x="38" y="15" width="3" height="2" class="pxl"  /> <rect x="58" y="15" width="1" height="1" class="pxl"  /> <rect x="76" y="15" width="1" height="13" class="pxl"  /> <rect x="106" y="15" width="1" height="3" class="pxl"  /> <rect x="121" y="15" width="2" height="7" class="pxl"  /> <rect x="136" y="15" width="2" height="6" class="pxl"  /> <rect x="1" y="16" width="1" height="10" class="pxl"  /> <rect x="52" y="16" width="4" height="4" class="pxl"  /> <rect x="96" y="16" width="1" height="17" class="pxl"  /> <rect x="105" y="16" width="1" height="2" class="pxl"  /> <rect x="109" y="16" width="1" height="1" class="pxl"  /> <rect x="135" y="16" width="1" height="5" class="pxl"  /> <rect x="38" y="17" width="1" height="21" class="pxl"  /> <rect x="42" y="17" width="2" height="3" class="pxl"  /> <rect x="107" y="17" width="1" height="1" class="pxl"  /> <rect x="131" y="17" width="4" height="4" class="pxl"  /> <rect x="138" y="17" width="1" height="4" class="pxl"  /> <rect x="24" y="18" width="1" height="12" class="pxl"  /> <rect x="41" y="18" width="1" height="11" class="pxl"  /> <rect x="87" y="18" width="1" height="5" class="pxl"  /> <rect x="120" y="18" width="1" height="13" class="pxl"  /> <rect x="129" y="18" width="2" height="4" class="pxl"  /> <rect x="139" y="18" width="4" height="3" class="pxl"  /> <rect x="13" y="19" width="2" height="9" class="pxl"  /> <rect x="86" y="19" width="1" height="7" class="pxl"  /> <rect x="88" y="19" width="1" height="2" class="pxl"  /> <rect x="127" y="19" width="2" height="4" class="pxl"  /> <rect x="143" y="19" width="2" height="5" class="pxl"  /> <rect x="0" y="20" width="1" height="4" class="pxl"  /> <rect x="42" y="20" width="1" height="4" class="pxl"  /> <rect x="52" y="20" width="3" height="6" class="pxl"  /> <rect x="83" y="20" width="2" height="4" class="pxl"  /> <rect x="126" y="20" width="1" height="2" class="pxl"  /> <rect x="145" y="20" width="1" height="3" class="pxl"  /> <rect x="40" y="21" width="1" height="30" class="pxl"  /> <rect x="82" y="21" width="1" height="1" class="pxl"  /> <rect x="85" y="21" width="1" height="7" class="pxl"  /> <rect x="119" y="21" width="1" height="12" class="pxl"  /> <rect x="131" y="21" width="2" height="1" class="pxl"  /> <rect x="142" y="21" width="1" height="5" class="pxl"  /> <rect x="23" y="22" width="1" height="8" class="pxl"  /> <rect x="75" y="22" width="1" height="6" class="pxl"  /> <rect x="121" y="22" width="1" height="5" class="pxl"  /> <rect x="3" y="23" width="1" height="7" class="pxl"  /> <rect x="105" y="23" width="2" height="6" class="pxl"  /> <rect x="141" y="23" width="1" height="4" class="pxl"  /> <rect x="39" y="24" width="1" height="26" class="pxl"  /> <rect x="84" y="24" width="1" height="5" class="pxl"  /> <rect x="87" y="24" width="2" height="3" class="pxl"  /> <rect x="104" y="24" width="1" height="17" class="pxl"  /> <rect x="107" y="24" width="1" height="2" class="pxl"  /> <rect x="140" y="24" width="1" height="7" class="pxl"  /> <rect x="143" y="24" width="1" height="1" class="pxl"  /> <rect x="4" y="25" width="1" height="9" class="pxl"  /> <rect x="12" y="25" width="1" height="3" class="pxl"  /> <rect x="22" y="25" width="1" height="7" class="pxl"  /> <rect x="51" y="25" width="1" height="21" class="pxl"  /> <rect x="65" y="25" width="5" height="3" class="pxl"  /> <rect x="73" y="25" width="2" height="4" class="pxl"  /> <rect x="78" y="25" width="1" height="5" class="pxl"  /> <rect x="83" y="25" width="1" height="3" class="pxl"  /> <rect x="89" y="25" width="1" height="4" class="pxl"  /> <rect x="139" y="25" width="1" height="6" class="pxl"  /> <rect x="28" y="26" width="1" height="26" class="pxl"  /> <rect x="52" y="26" width="2" height="11" class="pxl"  /> <rect x="63" y="26" width="2" height="9" class="pxl"  /> <rect x="70" y="26" width="3" height="3" class="pxl"  /> <rect x="79" y="26" width="1" height="6" class="pxl"  /> <rect x="90" y="26" width="1" height="2" class="pxl"  /> <rect x="103" y="26" width="1" height="22" class="pxl"  /> <rect x="118" y="26" width="1" height="12" class="pxl"  /> <rect x="137" y="26" width="2" height="5" class="pxl"  /> <rect x="5" y="27" width="1" height="26" class="pxl"  /> <rect x="62" y="27" width="1" height="5" class="pxl"  /> <rect x="80" y="27" width="1" height="17" class="pxl"  /> <rect x="88" y="27" width="1" height="1" class="pxl"  /> <rect x="136" y="27" width="1" height="5" class="pxl"  /> <rect x="6" y="28" width="1" height="26" class="pxl"  /> <rect x="13" y="28" width="1" height="1" class="pxl"  /> <rect x="21" y="28" width="1" height="7" class="pxl"  /> <rect x="65" y="28" width="1" height="1" class="pxl"  /> <rect x="69" y="28" width="1" height="1" class="pxl"  /> <rect x="130" y="28" width="6" height="4" class="pxl"  /> <rect x="141" y="28" width="2" height="3" class="pxl"  /> <rect x="81" y="29" width="1" height="16" class="pxl"  /> <rect x="105" y="29" width="1" height="7" class="pxl"  /> <rect x="127" y="29" width="3" height="4" class="pxl"  /> <rect x="143" y="29" width="2" height="3" class="pxl"  /> <rect x="18" y="30" width="3" height="4" class="pxl"  /> <rect x="65" y="30" width="1" height="5" class="pxl"  /> <rect x="102" y="30" width="1" height="17" class="pxl"  /> <rect x="117" y="30" width="1" height="14" class="pxl"  /> <rect x="126" y="30" width="1" height="2" class="pxl"  /> <rect x="145" y="30" width="1" height="12" class="pxl"  /> <rect x="7" y="31" width="1" height="10" class="pxl"  /> <rect x="17" y="31" width="1" height="2" class="pxl"  /> <rect x="66" y="31" width="1" height="4" class="pxl"  /> <rect x="82" y="31" width="1" height="10" class="pxl"  /> <rect x="67" y="32" width="1" height="2" class="pxl"  /> <rect x="116" y="32" width="1" height="12" class="pxl"  /> <rect x="130" y="32" width="2" height="1" class="pxl"  /> <rect x="144" y="32" width="1" height="3" class="pxl"  /> <rect x="146" y="32" width="1" height="9" class="pxl"  /> <rect x="13" y="33" width="1" height="7" class="pxl"  /> <rect x="22" y="33" width="2" height="3" class="pxl"  /> <rect x="93" y="33" width="1" height="8" class="pxl"  /> <rect x="12" y="34" width="1" height="4" class="pxl"  /> <rect x="14" y="34" width="1" height="10" class="pxl"  /> <rect x="20" y="34" width="1" height="1" class="pxl"  /> <rect x="24" y="34" width="2" height="4" class="pxl"  /> <rect x="41" y="34" width="1" height="13" class="pxl"  /> <rect x="101" y="34" width="1" height="12" class="pxl"  /> <rect x="15" y="35" width="1" height="17" class="pxl"  /> <rect x="50" y="35" width="1" height="14" class="pxl"  /> <rect x="64" y="35" width="1" height="1" class="pxl"  /> <rect x="147" y="35" width="1" height="4" class="pxl"  /> <rect x="23" y="36" width="1" height="1" class="pxl"  /> <rect x="92" y="36" width="1" height="13" class="pxl"  /> <rect x="100" y="36" width="1" height="6" class="pxl"  /> <rect x="16" y="37" width="1" height="14" class="pxl"  /> <rect x="52" y="37" width="1" height="10" class="pxl"  /> <rect x="115" y="37" width="1" height="9" class="pxl"  /> <rect x="25" y="38" width="1" height="1" class="pxl"  /> <rect x="91" y="38" width="1" height="11" class="pxl"  /> <rect x="99" y="38" width="1" height="6" class="pxl"  /> <rect x="144" y="38" width="1" height="5" class="pxl"  /> <rect x="17" y="39" width="1" height="11" class="pxl"  /> <rect x="29" y="40" width="1" height="11" class="pxl"  /> <rect x="79" y="40" width="1" height="5" class="pxl"  /> <rect x="90" y="40" width="1" height="8" class="pxl"  /> <rect x="98" y="40" width="1" height="5" class="pxl"  /> <rect x="118" y="40" width="3" height="3" class="pxl"  /> <rect x="143" y="40" width="1" height="4" class="pxl"  /> <rect x="49" y="41" width="1" height="9" class="pxl"  /> <rect x="69" y="41" width="2" height="4" class="pxl"  /> <rect x="97" y="41" width="1" height="6" class="pxl"  /> <rect x="114" y="41" width="1" height="6" class="pxl"  /> <rect x="121" y="41" width="3" height="3" class="pxl"  /> <rect x="139" y="41" width="4" height="3" class="pxl"  /> <rect x="30" y="42" width="1" height="9" class="pxl"  /> <rect x="68" y="42" width="1" height="2" class="pxl"  /> <rect x="71" y="42" width="1" height="10" class="pxl"  /> <rect x="78" y="42" width="1" height="4" class="pxl"  /> <rect x="82" y="42" width="1" height="4" class="pxl"  /> <rect x="89" y="42" width="1" height="4" class="pxl"  /> <rect x="124" y="42" width="15" height="3" class="pxl"  /> <rect x="4" y="43" width="1" height="8" class="pxl"  /> <rect x="53" y="43" width="1" height="5" class="pxl"  /> <rect x="72" y="43" width="1" height="8" class="pxl"  /> <rect x="76" y="43" width="2" height="4" class="pxl"  /> <rect x="83" y="43" width="3" height="3" class="pxl"  /> <rect x="88" y="43" width="1" height="4" class="pxl"  /> <rect x="96" y="43" width="1" height="5" class="pxl"  /> <rect x="120" y="43" width="1" height="1" class="pxl"  /> <rect x="54" y="44" width="1" height="5" class="pxl"  /> <rect x="73" y="44" width="3" height="3" class="pxl"  /> <rect x="86" y="44" width="2" height="3" class="pxl"  /> <rect x="113" y="44" width="1" height="4" class="pxl"  /> <rect x="123" y="44" width="1" height="1" class="pxl"  /> <rect x="139" y="44" width="1" height="1" class="pxl"  /> <rect x="38" y="45" width="1" height="5" class="pxl"  /> <rect x="70" y="45" width="1" height="1" class="pxl"  /> <rect x="95" y="45" width="1" height="4" class="pxl"  /> <rect x="104" y="45" width="1" height="4" class="pxl"  /> <rect x="112" y="45" width="1" height="4" class="pxl"  /> <rect x="18" y="46" width="1" height="5" class="pxl"  /> <rect x="48" y="46" width="1" height="5" class="pxl"  /> <rect x="55" y="46" width="1" height="4" class="pxl"  /> <rect x="85" y="46" width="1" height="1" class="pxl"  /> <rect x="93" y="46" width="2" height="3" class="pxl"  /> <rect x="105" y="46" width="1" height="4" class="pxl"  /> <rect x="109" y="46" width="3" height="3" class="pxl"  /> <rect x="37" y="47" width="1" height="4" class="pxl"  /> <rect x="56" y="47" width="2" height="4" class="pxl"  /> <rect x="73" y="47" width="1" height="2" class="pxl"  /> <rect x="106" y="47" width="3" height="3" class="pxl"  /> <rect x="19" y="48" width="1" height="4" class="pxl"  /> <rect x="27" y="48" width="1" height="4" class="pxl"  /> <rect x="31" y="48" width="6" height="3" class="pxl"  /> <rect x="41" y="48" width="2" height="3" class="pxl"  /> <rect x="46" y="48" width="2" height="3" class="pxl"  /> <rect x="58" y="48" width="1" height="5" class="pxl"  /> <rect x="14" y="49" width="1" height="4" class="pxl"  /> <rect x="20" y="49" width="1" height="4" class="pxl"  /> <rect x="26" y="49" width="1" height="4" class="pxl"  /> <rect x="43" y="49" width="3" height="3" class="pxl"  /> <rect x="59" y="49" width="2" height="4" class="pxl"  /> <rect x="70" y="49" width="1" height="4" class="pxl"  /> <rect x="109" y="49" width="1" height="1" class="pxl"  /> <rect x="7" y="50" width="1" height="4" class="pxl"  /> <rect x="13" y="50" width="1" height="3" class="pxl"  /> <rect x="21" y="50" width="1" height="4" class="pxl"  /> <rect x="25" y="50" width="1" height="4" class="pxl"  /> <rect x="61" y="50" width="2" height="4" class="pxl"  /> <rect x="69" y="50" width="1" height="4" class="pxl"  /> <rect x="8" y="51" width="2" height="3" class="pxl"  /> <rect x="11" y="51" width="2" height="3" class="pxl"  /> <rect x="22" y="51" width="3" height="3" class="pxl"  /> <rect x="57" y="51" width="1" height="1" class="pxl"  /> <rect x="63" y="51" width="6" height="3" class="pxl"  /> <rect x="10" y="52" width="1" height="3" class="pxl"  /> <rect x="9" y="54" width="1" height="1" class="pxl"  /> <rect x="11" y="54" width="1" height="1" class="pxl"  />
+      </svg> -->
       </a>
     </div>
   </div>
@@ -419,23 +349,51 @@
     color: #333;
     display: flex;
     flex-direction: column;
-    gap: 0.2em;
+    gap: 0.5em;
+  }
+
+  .item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1em;
   }
 
   .item-name {
     font-weight: 500;
+    flex: 1;
   }
 
   .item-description {
     font-size: 0.9em;
     color: #666;
     font-style: italic;
+    margin-left: .3em;
+    min-height: 1.44em;
+    line-height: 1.6;
+    display: block;
+  }
+
+  .item-prices {
+    display: grid;
+    grid-template-columns: 3em 3em;
+    gap: 1.5em;
+    flex-shrink: 0;
   }
 
   .item-price {
     font-size: 0.95em;
     color: #4a74c9;
     font-weight: 500;
+    text-align: right;
+  }
+
+  .small-price {
+    grid-column: 1;
+  }
+
+  .large-price {
+    grid-column: 2;
   }
 
 
@@ -456,9 +414,17 @@
     width: 10%;
     height: auto;
     position: relative;
-    left: 80%;
+    left: 85%;
     bottom: 1%;
   }
+
+  /* .kitsvg-container{
+    width: 25%;
+    height: auto;
+    position: relative;
+    left: 65%;
+    bottom: 3%;
+  } */
    .kitsvg-link {
      display: block;
      width: 100%;

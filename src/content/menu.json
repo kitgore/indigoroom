@@ -1,47 +1,78 @@
 {
   "categories": [
     {
-      "name": "Cocktails",
+      "name": "coffee",
       "items": [
         {
-          "name": "Classic Old Fashioned",
+          "name": "espresso",
           "description": "",
-          "price": ""
+          "smallprice": "3.50",
+          "largeprice": ""
         },
         {
-          "name": "Manhattan",
+          "name": "americano",
           "description": "",
-          "price": ""
+          "smallprice": "3.50",
+          "largeprice": "4.00"
         },
         {
-          "name": "Negroni",
+          "name": "cortado",
           "description": "",
-          "price": ""
+          "smallprice": "4.50",
+          "largeprice": ""
         },
         {
-          "name": "Martini",
+          "name": "cappuccino",
           "description": "",
-          "price": ""
+          "smallprice": "4.75",
+          "largeprice": ""
+        },
+        {
+          "name": "latte",
+          "description": "",
+          "smallprice": "4.75",
+          "largeprice": "5.50"
+        },
+        {
+          "name": "cold brew",
+          "description": "",
+          "smallprice": "5.00",
+          "largeprice": "5.50"
         }
       ]
     },
     {
-      "name": "Wine",
+      "name": "not coffee",
       "items": [
         {
-          "name": "House Red",
-          "description": "",
-          "price": ""
+          "name": "static lemonade",
+          "description": "fresh lemon juice, agave, seltzer water",
+          "smallprice": "4.00",
+          "largeprice": "4.50"
         },
         {
-          "name": "House White",
+          "name": "matcha latte",
           "description": "",
-          "price": ""
+          "smallprice": "5.00",
+          "largeprice": "5.50"
         },
         {
-          "name": "Sparkling",
+          "name": "chai latte",
           "description": "",
-          "price": ""
+          "smallprice": "5.50",
+          "largeprice": "5.50"
+        },
+        {
+          "name": "chocolate milk",
+          "description": "",
+          "smallprice": "3.00",
+          "largeprice": "3.50"
+        },
+        {
+          "name": "hot chocolate",
+          "description": "",
+          "smallprice": "3.00",
+          "largeprice": ""
         }
       ]
     }
