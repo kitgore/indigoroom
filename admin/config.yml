@@ -83,3 +83,12 @@ collections:
           - { label: "Contact Email", name: "email", widget: "string", required: false }
           - { label: "Phone", name: "phone", widget: "string", required: false }
           - { label: "Address", name: "address", widget: "text", required: false }
+      
+      - label: "Indigo Quotes"
+        name: "indigo-quotes"
+        file: "src/content/indigo-quotes.json"
+        fields:
+          - label: "Text Options"
+            name: "textBank"
+            widget: "list"
+            field: { label: "Text", name: "text", widget: "string" }
