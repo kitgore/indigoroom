@@ -54,6 +54,10 @@ collections:
         name: "menu"
         file: "src/content/menu.json"
         fields:
+          - label: "Flavor Text"
+            name: "flavorText"
+            widget: "text"
+            required: false
           - label: "Menu Categories"
             name: "categories"
             widget: "list"
@@ -65,7 +69,8 @@ collections:
                 fields:
                   - { label: "Item Name", name: "name", widget: "string" }
                   - { label: "Description", name: "description", widget: "text", required: false }
-                  - { label: "Price", name: "price", widget: "string", required: false }
+                  - { label: "Small Price", name: "smallprice", widget: "string", required: false }
+                  - { label: "Large Price", name: "largeprice", widget: "string", required: false }
       
       - label: "About"
         name: "about"

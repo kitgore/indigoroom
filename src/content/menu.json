@@ -1,4 +1,5 @@
 {
+  "flavorText": "vanilla, lavender, caramel, mocha, honey, agave, simple syrup",
   "categories": [
     {
       "name": "coffee",
@@ -72,6 +73,64 @@
           "name": "hot chocolate",
           "description": "",
           "smallprice": "3.00",
+          "largeprice": ""
+        }
+      ]
+    },
+    {
+      "name": "specials",
+      "items": [
+        {
+          "name": "ube latte",
+          "description": "condensed milk, ube extract, espresso, milk",
+          "smallprice": "5.75",
+          "largeprice": "6.25"
+        },
+        {
+          "name": "honey carmamom latte",
+          "description": "honey, carmamom, espresso, milk",
+          "smallprice": "5.50",
+          "largeprice": "6.00"
+        },
+        {
+          "name": "cold foam americano",
+          "description": "agave cold foam, espresso, water, cocoa powder dusting",
+          "smallprice": "5.00",
+          "largeprice": "5.50"
+        },
+        {
+          "name": "earl grey matcha",
+          "description": "homemade earl grey syrup, matcha, milk",
+          "smallprice": "5.50",
+          "largeprice": "6.00"
+        }
+      ]
+    },
+    {
+      "name": "add-ons",
+      "items": [
+        {
+          "name": "flavor",
+          "description": "",
+          "smallprice": "0.50",
+          "largeprice": ""
+        },
+        {
+          "name": "oat milk",
+          "description": "",
+          "smallprice": "0.75",
+          "largeprice": ""
+        },
+        {
+          "name": "1 shot",
+          "description": "",
+          "smallprice": "1.00",
+          "largeprice": ""
+        },
+        {
+          "name": "2 shots",
+          "description": "",
+          "smallprice": "1.00",
           "largeprice": ""
         }
       ]

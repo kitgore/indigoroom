@@ -122,31 +122,94 @@
       <section id="menu" class="content-section">
         <h2>menu</h2>
         <div class="menu-grid">
-          {#each menuData.categories as category}
-            <div class="menu-category">
-              <h3>{category.name}</h3>
-              <ul>
-                {#each category.items as item}
-                  <li>
-                    <div class="item-row">
-                      <span class="item-name">{item.name}</span>
-                      <div class="item-prices">
-                        {#if item.smallprice}
-                          <span class="item-price small-price">{item.smallprice}</span>
-                        {/if}
-                        {#if item.largeprice}
-                          <span class="item-price large-price">{item.largeprice}</span>
-                        {/if}
+          <div class="menu-column">
+            {#each menuData.categories.filter((_, i) => i === 0 || i === 2) as category}
+              <div class="menu-category">
+                <h3>{category.name}</h3>
+                <ul>
+                  {#each category.items as item}
+                    <li>
+                      <div class="item-row">
+                        <span class="item-name">{item.name}</span>
+                        <div class="item-prices">
+                          {#if item.smallprice}
+                            <span class="item-price small-price">{item.smallprice}</span>
+                          {/if}
+                          {#if item.largeprice}
+                            <span class="item-price large-price">{item.largeprice}</span>
+                          {/if}
+                        </div>
                       </div>
-                    </div>
-                    {#if item.description}
-                      <span class="item-description">{item.description}</span>
-                    {/if}
-                  </li>
-                {/each}
-              </ul>
-            </div>
-          {/each}
+                      {#if item.description}
+                        <span class="item-description">{item.description}</span>
+                      {/if}
+                    </li>
+                  {/each}
+                </ul>
+              </div>
+            {/each}
+          </div>
+          
+          <div class="menu-column">
+            {#each menuData.categories.filter((_, i) => i === 1) as category}
+              <div class="menu-category">
+                <h3>{category.name}</h3>
+                <ul>
+                  {#each category.items as item}
+                    <li>
+                      <div class="item-row">
+                        <span class="item-name">{item.name}</span>
+                        <div class="item-prices">
+                          {#if item.smallprice}
+                            <span class="item-price small-price">{item.smallprice}</span>
+                          {/if}
+                          {#if item.largeprice}
+                            <span class="item-price large-price">{item.largeprice}</span>
+                          {/if}
+                        </div>
+                      </div>
+                      {#if item.description}
+                        <span class="item-description">{item.description}</span>
+                      {/if}
+                    </li>
+                  {/each}
+                </ul>
+              </div>
+            {/each}
+
+            {#if menuData.flavorText}
+              <div class="menu-category centered-category">
+                <h3>flavors</h3>
+                <p class="flavor-text">{menuData.flavorText}</p>
+              </div>
+            {/if}
+
+            {#each menuData.categories.filter((_, i) => i === 3) as category}
+              <div class="menu-category centered-category">
+                <h3>{category.name}</h3>
+                <ul class="centered-list">
+                  {#each category.items as item}
+                    <li>
+                      <div class="item-row centered-row">
+                        <span class="item-name">{item.name}</span>
+                        <div class="item-prices">
+                          {#if item.smallprice}
+                            <span class="item-price small-price">{item.smallprice}</span>
+                          {/if}
+                          {#if item.largeprice}
+                            <span class="item-price large-price">{item.largeprice}</span>
+                          {/if}
+                        </div>
+                      </div>
+                      {#if item.description}
+                        <span class="item-description">{item.description}</span>
+                      {/if}
+                    </li>
+                  {/each}
+                </ul>
+              </div>
+            {/each}
+          </div>
         </div>
       </section>
 
@@ -309,8 +372,12 @@
     margin-bottom: 10vh;
   }
 
+  .content-section:last-child {
+    margin-bottom: 0;
+  }
+
   .content-section h2 {
-    font-size: 2.5em;
+    font-size: clamp(2.0rem, 4vw, 3.0rem);
     margin-bottom: 1em;
     color: #111;
   }
@@ -341,14 +408,29 @@
 
   .menu-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(17.5vw, 1fr));
+    grid-template-columns: 1fr 1fr;
     gap: 3em;
   }
 
+  .menu-column {
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+  }
+
+  .menu-category {
+    break-inside: avoid;
+  }
+
   .menu-category h3 {
-    font-size: 1.5em;
+    font-size: clamp(1.2rem, 2vw, 2.5rem);
     margin-bottom: 1em;
     color: #4a74c9;
+  }
+
+  .menu-category.centered-category h3 {
+    text-align: center;
+    margin-bottom: 0.5em;
   }
 
   .menu-category ul {
@@ -356,8 +438,22 @@
     padding: 0;
   }
 
+  .menu-category ul.centered-list {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .flavor-text {
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+    font-size: clamp(1.0rem, 1.4vw, 1.5rem);
+    line-height: 1.6;
+    color: #333;
+  }
+
   .menu-category li {
-    font-size: 1.2em;
+    font-size: clamp(1.0rem, 1.4vw, 1.5rem);
     margin-bottom: 0.5em;
     color: #333;
     display: flex;
@@ -370,6 +466,20 @@
     justify-content: space-between;
     align-items: baseline;
     gap: 1em;
+  }
+
+  .item-row.centered-row {
+    justify-content: space-between;
+    gap: 0.5em;
+  }
+
+  .centered-row .item-name {
+    flex: 0 1 auto;
+    text-align: left;
+  }
+
+  .centered-row .item-prices {
+    flex: 0 0 auto;
   }
 
   .item-name {
@@ -418,7 +528,7 @@
   }
 
   .about-content p {
-    font-size: 1.2em;
+    font-size: clamp(1.0rem, 1.4vw, 1.5rem);
     line-height: 1.6;
     margin-bottom: 1.5em;
     color: #333;
@@ -470,7 +580,7 @@
    }
 
   /* Responsive adjustments for smaller screens */
-  @media (max-width: 768px) {
+  @media (max-width: 950px) {
     .nav-row {
       font-size: 4vw;
     }
@@ -478,7 +588,7 @@
     .menu-grid {
       grid-template-columns: 1fr;
     }
-    
+
     .sections {
       max-width: 95%;
     }

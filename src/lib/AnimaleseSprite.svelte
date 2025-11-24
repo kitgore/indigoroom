@@ -203,23 +203,24 @@
   }
 
   .sprite-wrapper {
-    flex-shrink: 0;
+    width: 50%;
     overflow: hidden;
     position: relative;
-    width: auto;
-    height: auto;
   }
 
   .sprite-sheet {
     display: block;
     height: auto;
     max-width: none;
+    /* Ensure the sprite sheet width is calculated based on the frame count and container width */
+    /* The width of the sprite sheet needs to be frameCount * 100% relative to the sprite-wrapper */
+    /* However, setting width in the inline style overrides this, so we need to be careful */
     transition: transform 0.05s steps(1);
   }
 
   .text-display {
-    flex: 1;
-    font-size: 1.2em;
+    width: 50%;
+    font-size: clamp(1.0rem, 1.4vw, 1.5rem);
     line-height: 1.6;
     color: #333;
     font-weight: 500;
