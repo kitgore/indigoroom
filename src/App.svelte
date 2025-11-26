@@ -100,6 +100,14 @@
             {link.label} <span class="nav-num">({link.number})</span>
           </button>
         {/each}
+        <a 
+          href="https://www.instagram.com/indigoroomphx/" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="nav-row"
+        >
+          insta <span class="nav-num"><svg class="arrow-icon" viewBox="0 0 89 90" xmlns="http://www.w3.org/2000/svg"><path d="M88.9902 0V65H77.9902V19.5928L7.77832 89.8047L0 82.0273L71.0264 11H23.9902V0H88.9902Z" fill="currentColor"/></svg></span>
+        </a>
       </nav>
     </header>
   </div>
@@ -124,30 +132,30 @@
         <div class="menu-grid">
           <div class="menu-column">
             {#each menuData.categories.filter((_, i) => i === 0 || i === 2) as category}
-              <div class="menu-category">
-                <h3>{category.name}</h3>
-                <ul>
-                  {#each category.items as item}
-                    <li>
-                      <div class="item-row">
-                        <span class="item-name">{item.name}</span>
-                        <div class="item-prices">
-                          {#if item.smallprice}
-                            <span class="item-price small-price">{item.smallprice}</span>
-                          {/if}
-                          {#if item.largeprice}
-                            <span class="item-price large-price">{item.largeprice}</span>
-                          {/if}
-                        </div>
+            <div class="menu-category">
+              <h3>{category.name}</h3>
+              <ul>
+                {#each category.items as item}
+                  <li>
+                    <div class="item-row">
+                      <span class="item-name">{item.name}</span>
+                      <div class="item-prices">
+                        {#if item.smallprice}
+                          <span class="item-price small-price">{item.smallprice}</span>
+                        {/if}
+                        {#if item.largeprice}
+                          <span class="item-price large-price">{item.largeprice}</span>
+                        {/if}
                       </div>
-                      {#if item.description}
-                        <span class="item-description">{item.description}</span>
-                      {/if}
-                    </li>
-                  {/each}
-                </ul>
-              </div>
-            {/each}
+                    </div>
+                    {#if item.description}
+                      <span class="item-description">{item.description}</span>
+                    {/if}
+                  </li>
+                {/each}
+              </ul>
+            </div>
+          {/each}
           </div>
           
           <div class="menu-column">
@@ -328,6 +336,8 @@
     width: 100%;
     transition: text-decoration 0.3s ease;
     outline: none;
+    text-decoration: none;
+    display: block;
   }
 
   .nav-row:hover {
@@ -335,7 +345,7 @@
   }
 
   .nav-row.active {
-    text-decoration: underline;
+    /* text-decoration: underline; */
   }
 
   .nav-row:focus {
@@ -346,6 +356,15 @@
     color: #4a74c9;
     font-weight: 500;
     margin-left: 0.3vw;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .arrow-icon {
+    height: 0.8em;
+    width: auto;
+    position: relative;
+    top: 0.1em;
   }
 
   .animation-container {
@@ -588,7 +607,7 @@
     .menu-grid {
       grid-template-columns: 1fr;
     }
-
+    
     .sections {
       max-width: 95%;
     }
