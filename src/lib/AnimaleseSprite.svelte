@@ -20,7 +20,7 @@
   let audioElement = null;
   let isLoaded = false;
   let selectedText = "";
-  let displayedText = "";
+  let displayedText = "<- click";
   let textInterval = null;
   let shuffledTextBank = [];
   let currentTextIndex = 0;
