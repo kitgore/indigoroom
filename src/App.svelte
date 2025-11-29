@@ -8,6 +8,7 @@
   import parking from './assets/parkingDT.png';
   import kitgore from './assets/kitgore-export2.svg';
   import indigoSheet from './assets/indigo-Sheet.png';
+  import indigoCup from './assets/indigoCup.png';
   import { onMount } from 'svelte';
 
   // Import JSON content files
@@ -123,6 +124,9 @@
             {#each hoursData.hours as hour}
               <h3>{hour.day.toLowerCase()}: {hour.time}</h3>
             {/each}
+          </div>
+          <div class="hours-image">
+            <img src={indigoCup} alt="Indigo Room drink" />
           </div>
         </div>
       </section>
@@ -403,8 +407,26 @@
 
   .hours-grid {
     display: grid;
+    grid-template-columns: auto 1fr;
     gap: 2em;
     margin-left: 1rem;
+    align-items: flex-end;
+  }
+
+  .hours-image {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+  }
+
+  .hours-image img {
+    /* Scale from 280px at 950px viewport to ~500px at larger viewports */
+    height: clamp(280px, calc(180px + 10vw), 500px);
+    width: auto;
+    object-fit: contain;
+    /* Grow upward into the space above */
+    margin-top: clamp(-220px, calc(-10vw - 80px), 0px);
   }
 
   h2{
@@ -602,6 +624,21 @@
   @media (max-width: 950px) {
     .nav-row {
       font-size: 4vw;
+    }
+    
+    .hours-grid {
+      grid-template-columns: 1fr;
+      align-items: center;
+    }
+    
+    .hours-image {
+      order: -1;
+      align-items: center;
+    }
+    
+    .hours-image img {
+      height: 200px;
+      margin-top: 0;
     }
     
     .menu-grid {
