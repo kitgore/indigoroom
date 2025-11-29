@@ -152,6 +152,126 @@
               });
               
               console.log('CMS initialization complete with DecapBridge PKCE config');
+              
+              // Register preview styles to match the main site
+              window.CMS.registerPreviewStyle('/admin/preview-styles.css');
+              
+              // Custom preview template for Hours
+              const HoursPreview = window.createClass({
+                render: function() {
+                  const entry = this.props.entry;
+                  const hours = entry.getIn(['data', 'hours']);
+                  
+                  return window.h('div', {},
+                    window.h('h2', {}, 'hours'),
+                    window.h('div', { className: 'hours-list' },
+                      hours && hours.map(function(hour, index) {
+                        return window.h('h3', { key: index, className: 'hours-item' },
+                          hour.get('day').toLowerCase() + ': ' + hour.get('time')
+                        );
+                      }).toArray()
+                    )
+                  );
+                }
+              });
+              window.CMS.registerPreviewTemplate('hours', HoursPreview);
+              
+              // Custom preview template for Menu
+              const MenuPreview = window.createClass({
+                render: function() {
+                  const entry = this.props.entry;
+                  const categories = entry.getIn(['data', 'categories']);
+                  const flavorText = entry.getIn(['data', 'flavorText']);
+                  
+                  return window.h('div', {},
+                    window.h('h2', {}, 'menu'),
+                    flavorText && window.h('p', { className: 'flavor-text' }, flavorText),
+                    window.h('div', { className: 'menu-grid' },
+                      categories && categories.map(function(category, catIndex) {
+                        return window.h('div', { key: catIndex, className: 'menu-category' },
+                          window.h('h3', {}, category.get('name')),
+                          window.h('ul', {},
+                            category.get('items') && category.get('items').map(function(item, itemIndex) {
+                              return window.h('li', { key: itemIndex },
+                                window.h('div', { className: 'item-row' },
+                                  window.h('span', { className: 'item-name' }, item.get('name')),
+                                  window.h('div', { className: 'item-prices' },
+                                    item.get('smallprice') && window.h('span', { className: 'item-price' }, item.get('smallprice')),
+                                    item.get('largeprice') && window.h('span', { className: 'item-price' }, item.get('largeprice'))
+                                  )
+                                ),
+                                item.get('description') && window.h('span', { className: 'item-description' }, item.get('description'))
+                              );
+                            }).toArray()
+                          )
+                        );
+                      }).toArray()
+                    )
+                  );
+                }
+              });
+              window.CMS.registerPreviewTemplate('menu', MenuPreview);
+              
+              // Custom preview template for About
+              const AboutPreview = window.createClass({
+                render: function() {
+                  const entry = this.props.entry;
+                  const title = entry.getIn(['data', 'title']);
+                  const description = entry.getIn(['data', 'description']);
+                  
+                  return window.h('div', {},
+                    window.h('h2', {}, title || 'about'),
+                    window.h('div', { className: 'about-content' },
+                      description && description.split('\n\n').map(function(paragraph, index) {
+                        return window.h('p', { key: index }, paragraph);
+                      })
+                    )
+                  );
+                }
+              });
+              window.CMS.registerPreviewTemplate('about', AboutPreview);
+              
+              // Custom preview template for Indigo Quotes
+              const QuotesPreview = window.createClass({
+                render: function() {
+                  const entry = this.props.entry;
+                  const textBank = entry.getIn(['data', 'textBank']);
+                  
+                  return window.h('div', {},
+                    window.h('h2', {}, 'indigo quotes'),
+                    window.h('div', { className: 'quotes-list' },
+                      textBank && textBank.map(function(quote, index) {
+                        return window.h('span', { key: index, className: 'quote-item' }, quote);
+                      }).toArray()
+                    )
+                  );
+                }
+              });
+              window.CMS.registerPreviewTemplate('indigo-quotes', QuotesPreview);
+              
+              // Custom preview template for Settings
+              const SettingsPreview = window.createClass({
+                render: function() {
+                  const entry = this.props.entry;
+                  const data = entry.get('data');
+                  
+                  return window.h('div', { className: 'settings-preview' },
+                    window.h('h2', {}, 'site settings'),
+                    window.h('dl', {},
+                      window.h('dt', {}, 'Title'),
+                      window.h('dd', {}, data.get('title')),
+                      window.h('dt', {}, 'Description'),
+                      window.h('dd', {}, data.get('description')),
+                      data.get('email') && [window.h('dt', { key: 'email-label' }, 'Email'), window.h('dd', { key: 'email-value' }, data.get('email'))],
+                      data.get('phone') && [window.h('dt', { key: 'phone-label' }, 'Phone'), window.h('dd', { key: 'phone-value' }, data.get('phone'))],
+                      data.get('address') && [window.h('dt', { key: 'address-label' }, 'Address'), window.h('dd', { key: 'address-value' }, data.get('address'))]
+                    )
+                  );
+                }
+              });
+              window.CMS.registerPreviewTemplate('settings', SettingsPreview);
+              
+              console.log('Custom preview templates registered');
             } else {
               console.error('CMS object not available');
             }
