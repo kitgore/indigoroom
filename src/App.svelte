@@ -11,6 +11,98 @@
   import indigoCup from './assets/indigoCup.png';
   import { onMount } from 'svelte';
 
+  // Custom confetti function - 2D rotation only, no flipping
+  function createCupConfetti(originX, originY, imageSrc) {
+    const particleCount = 70;
+    const particles = [];
+    
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.style.cssText = `
+        position: fixed;
+        width: 100px;
+        height: 100px;
+        pointer-events: none;
+        z-index: 9999;
+        left: ${originX}px;
+        top: ${originY}px;
+      `;
+      
+      const img = document.createElement('img');
+      img.src = imageSrc;
+      img.style.cssText = 'width: 100%; height: 100%; object-fit: contain;';
+      particle.appendChild(img);
+      document.body.appendChild(particle);
+      
+      // Random velocity and rotation (matching your settings)
+      const angle = (Math.random() - 0.5) * Math.PI * 2.8; // Wide spread (~500 degrees)
+      const speed = 40 + Math.random() * 20; // startVelocity ~50
+      
+      particles.push({
+        element: particle,
+        x: originX,
+        y: originY,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed - 10, // Slight upward bias
+        rotation: Math.random() * 360,
+        rotationSpeed: (Math.random() - 0.5) * 6, // 2D spin only
+        opacity: 1
+      });
+    }
+    
+    const gravity = 0.7; // Your gravity setting
+    const decay = .96;  // Your decay setting
+    const fadeStart = 150;
+    let tick = 0;
+    const maxTicks = 200;
+    
+    function animate() {
+      tick++;
+      let alive = false;
+      
+      for (const p of particles) {
+        p.vy += gravity;
+        p.vx *= decay;
+        p.vy *= decay;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rotation += p.rotationSpeed;
+        
+        // Fade out near the end
+        if (tick > fadeStart) {
+          p.opacity = Math.max(0, 1 - (tick - fadeStart) / (maxTicks - fadeStart));
+        }
+        
+        p.element.style.transform = `translate(${p.x - originX}px, ${p.y - originY}px) rotate(${p.rotation}deg)`;
+        p.element.style.opacity = p.opacity;
+        
+        if (p.opacity > 0 && p.y < window.innerHeight + 100) {
+          alive = true;
+        }
+      }
+      
+      if (alive && tick < maxTicks) {
+        requestAnimationFrame(animate);
+      } else {
+        // Cleanup
+        for (const p of particles) {
+          p.element.remove();
+        }
+      }
+    }
+    
+    requestAnimationFrame(animate);
+  }
+
+  function triggerCupConfetti(event) {
+    const img = event.currentTarget;
+    const rect = img.getBoundingClientRect();
+    const originX = rect.left + rect.width / 2;
+    const originY = rect.top + rect.height / 2;
+    
+    createCupConfetti(originX, originY, indigoCup);
+  }
+
   // Import JSON content files
   import hoursData from './content/hours.json';
   import menuData from './content/menu.json';
@@ -126,7 +218,12 @@
             {/each}
           </div>
           <div class="hours-image">
-            <img src={indigoCup} alt="Indigo Room drink" />
+            <img 
+              src={indigoCup} 
+              alt="Indigo Room drink" 
+              on:click={triggerCupConfetti}
+              class="cup-clickable"
+            />
           </div>
         </div>
       </section>
@@ -427,6 +524,19 @@
     object-fit: contain;
     /* Grow upward into the space above */
     margin-top: clamp(-220px, calc(-10vw - 80px), 0px);
+  }
+
+  .cup-clickable {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .cup-clickable:hover {
+    transform: scale(1.015);
+  }
+
+  .cup-clickable:active {
+    transform: scale(0.985);
   }
 
   h2{
