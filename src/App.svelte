@@ -6,6 +6,7 @@
   import star3 from './assets/star3.png';
   import logo from './assets/irTypeLogo.svg';
   import parking from './assets/parkingDT.png';
+  import parkingMobile from './assets/parkingMobile.png';
   import kitgore from './assets/kitgore-export2.svg';
   import indigoSheet from './assets/indigo-Sheet.png';
   import indigoCup from './assets/indigoCup.png';
@@ -36,14 +37,14 @@
       
       // Random velocity and rotation (matching your settings)
       const angle = (Math.random() - 0.5) * Math.PI * 2.8; // Wide spread (~500 degrees)
-      const speed = 40 + Math.random() * 20; // startVelocity ~50
+      const speed = 20 + Math.random() * 35; // startVelocity ~50
       
       particles.push({
         element: particle,
         x: originX,
         y: originY,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed - 10, // Slight upward bias
+        vx: Math.cos(angle) * speed * .75,
+        vy: Math.sin(angle) * speed - 30, // Slight upward bias
         rotation: Math.random() * 360,
         rotationSpeed: (Math.random() - 0.5) * 6, // 2D spin only
         opacity: 1
@@ -182,7 +183,20 @@
 <main>
   <div class="sidebar">
     <header>
-      <img src={logo} alt="indigo room" on:click={scrollToTop} />
+      <div class="logo-wrapper" on:click={scrollToTop}>
+        <img src={logo} alt="indigo room" class="logo-img" />
+        <svg class="logo-invert-blend" viewBox="0 0 279.4 104.51" xmlns="http://www.w3.org/2000/svg">
+          <path d="M277.74,64.13c2.08.55,1.69,7.41,1.54,9.54-.42,6-1.92,15.97-3.07,21.92-1.53,7.95-3.61,9.33-11.93,8.54l4-28.49c.04-.95-3.11-.7-4.04-.05-2.77,1.9-1.42,25.24-6.91,28.07-2.35,1.21-6.34.13-9,.47,1.72-4.35,1.42-9.84,2.02-14.47.53-4.1,2.48-10.09,1.97-14.03-.16-1.22-3.59-.97-4.01,1.98-.79,5.5-1.07,11.59-2.01,16.98-1.62,9.26-3.11,10.29-12.93,9.53,1.52-2.1.7-4.23,1.03-6.47.41-2.82,1.53-6.25,1.93-9.06.9-6.26.92-13.78,2.19-19.8.38-1.8,2.01-3.45,3.32-4.67h35.9Z"/>
+          <path d="M116.68,18.13c-1.03,2.45-.68,4.95-1.03,7.47-.78,5.67-2.07,11.4-2.93,17.06-.65,4.28-.01,9.49-2.5,13.5-3.08,2.14-6.83,2.15-10.5,1.97l5.99-41,10.97,1.01Z"/>
+          <path d="M0,58.13L4.99,18.12l10.97-1c-1.07,12.41-3.13,24.85-5.17,37.31-2.21,4.08-6.63,3.92-10.79,3.69Z"/>
+          <path d="M106.71,104.13l4.05-26.94c2.69.29,6.98-.68,9.35,0,.94.27,1.23.86,1.11,1.93-.31,2.84-1.18,5.93-1.51,8.54-1.29,10,.59,18.81-13,16.47Z"/>
+          <path d="M118.67.13l-1.45,13.05c-.95,1.43-8.97,1.39-10.54.47s.73-4.52.07-5.97C108.4-.06,111.65,1.01,118.67.13Z"/>
+          <path d="M5.98,14.13c-.67-.63,1.31-10.82,2.47-12.02,1.59-1.64,3.79-.81,5.97-1.01,1.03-.09,2.31-1.12,3.01-.97s1.15,1.01,1.04,2c-.26,2.4-.95,9.4-1.98,11.05-1.21,1.93-8.08.56-10.52.95Z"/>
+          <path d="M198.95,18.13h-35.9c-.38,0-3.12,3.41-3.99,4l-3.97-4.02-34.45.49c-1.31,1.13-2.26,2.56-2.77,4.22-2.07,6.66-2.29,17.49-3.22,24.77-.34,2.66-2.71,9.37,1.53,10.53h26.43c-.02,1.93.61,5.27-1.59,5.91-4.7,1.35-16.04-.5-21.89.05-7.41.71-7.49,4.48-8.44,11.04h37.4c.28,0,3.16-1.76,3.32-2.67.8-3.1,1.68-6.73,2.13-9.87.38-2.67-1.01-5.68,1.53-7.46.95.98,2.14,2.12,3.44,2.55,3.49,1.16,25.72.95,30.51.49,1.99-.19,4.33-.84,5.97-2.01,2.22-2.32,2.97-15.48,3.5-19.49.44-3.38,1.62-7.73,1.93-11.06.14-1.53.45-7.47-1.46-7.47ZM145.63,37.66c-.45,3.16.3,7-2.52,9.47h-17.45l2.06-17.94c1.01.24,2.29-1.06,2.43-1.06h16.45c.66,3.47-.53,6.45-.97,9.53ZM186.34,45.48l-1.35,1.65h-17.45l2.14-17.35,1.35-1.65h17.45l-2.14,17.35Z"/>
+          <path d="M233.86,64.13h-34.9l-3.99,5-2.47-4.52-35.98-.04c-.68.48-4.55,13.17-4.89,15.09-.76,4.26-1.74,11.6-2.07,15.93-.15,2.01-.49,8,1.54,8.54h35.9l3.99-5,2.47,4.52h35.94c.82-1.01,2.45-1.97,2.82-3.18,1.42-4.64,1.53-11.84,2.18-16.81.44-3.38,1.62-7.73,1.93-11.06.19-2.05.17-8.47-2.46-8.47ZM180.39,91.51l-1.38,1.62h-18.45l2.99-18h18.95l-2.11,16.38ZM222.39,93.13h-18.95l2.14-16.35,1.35-1.65h17.45c.03,6.08-1.17,11.99-1.99,18Z"/>
+          <path d="M96.42,1.31c-5.45,2.22-2.65,15.69-6.26,16.72l-26.72.2-3.1,5.89c-1.16,0-1.02-6.49-3.96-6.03l-35.45.5c-1.46.75-2.37,3.61-2.76,5.23-1.85,7.72-2.06,17.67-3.23,25.76-.35,2.39-.99,5.85-1.96,8.04l7.3.32,4.51-3.48,3.28-23.71c.16-.58,2-2.53,2.36-2.63,2.73-.75,12.23,0,15.96,0,2.4,0,.61,3.68.53,4.53-.67,7.03-2.22,14.01-2.99,21-.16,1.48,0,2.99-.04,4.47,4.67.6,10.59-.35,11.8-5.67.29-1.28-.23-4.33.67-4.33l.95,8.05c1.46,1.3,3.08,1.82,4.99,1.99,9.5.87,20.29-.72,29.95-.05,5.3-.76,5.7-6.06,6.46-10.52,1.81-10.62,2.59-22.12,4.05-32.93l1.96-14.53c-.52-.52-7.05.68-8.29,1.19ZM89.82,30.64c-1.78,5.27-.33,12-3.56,16.49h-17.45l2.08-17.91c.97.18,2.28-1.09,2.41-1.09h14.96c.38,0,1.77,1.67,1.56,2.51Z"/>
+        </svg>
+      </div>
       <nav>
         {#each navLinks as link}
           <button 
@@ -205,6 +219,18 @@
     </header>
   </div>
   <div class="content">
+    <!-- Mobile logo with blend mode - must be inside content for blend to work -->
+    <svg class="mobile-logo-blend" viewBox="0 0 279.4 104.51" xmlns="http://www.w3.org/2000/svg" on:click={scrollToTop}>
+      <path fill="#fff" d="M277.74,64.13c2.08.55,1.69,7.41,1.54,9.54-.42,6-1.92,15.97-3.07,21.92-1.53,7.95-3.61,9.33-11.93,8.54l4-28.49c.04-.95-3.11-.7-4.04-.05-2.77,1.9-1.42,25.24-6.91,28.07-2.35,1.21-6.34.13-9,.47,1.72-4.35,1.42-9.84,2.02-14.47.53-4.1,2.48-10.09,1.97-14.03-.16-1.22-3.59-.97-4.01,1.98-.79,5.5-1.07,11.59-2.01,16.98-1.62,9.26-3.11,10.29-12.93,9.53,1.52-2.1.7-4.23,1.03-6.47.41-2.82,1.53-6.25,1.93-9.06.9-6.26.92-13.78,2.19-19.8.38-1.8,2.01-3.45,3.32-4.67h35.9Z"/>
+      <path fill="#fff" d="M116.68,18.13c-1.03,2.45-.68,4.95-1.03,7.47-.78,5.67-2.07,11.4-2.93,17.06-.65,4.28-.01,9.49-2.5,13.5-3.08,2.14-6.83,2.15-10.5,1.97l5.99-41,10.97,1.01Z"/>
+      <path fill="#fff" d="M0,58.13L4.99,18.12l10.97-1c-1.07,12.41-3.13,24.85-5.17,37.31-2.21,4.08-6.63,3.92-10.79,3.69Z"/>
+      <path fill="#fff" d="M106.71,104.13l4.05-26.94c2.69.29,6.98-.68,9.35,0,.94.27,1.23.86,1.11,1.93-.31,2.84-1.18,5.93-1.51,8.54-1.29,10,.59,18.81-13,16.47Z"/>
+      <path fill="#fff" d="M118.67.13l-1.45,13.05c-.95,1.43-8.97,1.39-10.54.47s.73-4.52.07-5.97C108.4-.06,111.65,1.01,118.67.13Z"/>
+      <path fill="#fff" d="M5.98,14.13c-.67-.63,1.31-10.82,2.47-12.02,1.59-1.64,3.79-.81,5.97-1.01,1.03-.09,2.31-1.12,3.01-.97s1.15,1.01,1.04,2c-.26,2.4-.95,9.4-1.98,11.05-1.21,1.93-8.08.56-10.52.95Z"/>
+      <path fill="#fff" d="M198.95,18.13h-35.9c-.38,0-3.12,3.41-3.99,4l-3.97-4.02-34.45.49c-1.31,1.13-2.26,2.56-2.77,4.22-2.07,6.66-2.29,17.49-3.22,24.77-.34,2.66-2.71,9.37,1.53,10.53h26.43c-.02,1.93.61,5.27-1.59,5.91-4.7,1.35-16.04-.5-21.89.05-7.41.71-7.49,4.48-8.44,11.04h37.4c.28,0,3.16-1.76,3.32-2.67.8-3.1,1.68-6.73,2.13-9.87.38-2.67-1.01-5.68,1.53-7.46.95.98,2.14,2.12,3.44,2.55,3.49,1.16,25.72.95,30.51.49,1.99-.19,4.33-.84,5.97-2.01,2.22-2.32,2.97-15.48,3.5-19.49.44-3.38,1.62-7.73,1.93-11.06.14-1.53.45-7.47-1.46-7.47ZM145.63,37.66c-.45,3.16.3,7-2.52,9.47h-17.45l2.06-17.94c1.01.24,2.29-1.06,2.43-1.06h16.45c.66,3.47-.53,6.45-.97,9.53ZM186.34,45.48l-1.35,1.65h-17.45l2.14-17.35,1.35-1.65h17.45l-2.14,17.35Z"/>
+      <path fill="#fff" d="M233.86,64.13h-34.9l-3.99,5-2.47-4.52-35.98-.04c-.68.48-4.55,13.17-4.89,15.09-.76,4.26-1.74,11.6-2.07,15.93-.15,2.01-.49,8,1.54,8.54h35.9l3.99-5,2.47,4.52h35.94c.82-1.01,2.45-1.97,2.82-3.18,1.42-4.64,1.53-11.84,2.18-16.81.44-3.38,1.62-7.73,1.93-11.06.19-2.05.17-8.47-2.46-8.47ZM180.39,91.51l-1.38,1.62h-18.45l2.99-18h18.95l-2.11,16.38ZM222.39,93.13h-18.95l2.14-16.35,1.35-1.65h17.45c.03,6.08-1.17,11.99-1.99,18Z"/>
+      <path fill="#fff" d="M96.42,1.31c-5.45,2.22-2.65,15.69-6.26,16.72l-26.72.2-3.1,5.89c-1.16,0-1.02-6.49-3.96-6.03l-35.45.5c-1.46.75-2.37,3.61-2.76,5.23-1.85,7.72-2.06,17.67-3.23,25.76-.35,2.39-.99,5.85-1.96,8.04l7.3.32,4.51-3.48,3.28-23.71c.16-.58,2-2.53,2.36-2.63,2.73-.75,12.23,0,15.96,0,2.4,0,.61,3.68.53,4.53-.67,7.03-2.22,14.01-2.99,21-.16,1.48,0,2.99-.04,4.47,4.67.6,10.59-.35,11.8-5.67.29-1.28-.23-4.33.67-4.33l.95,8.05c1.46,1.3,3.08,1.82,4.99,1.99,9.5.87,20.29-.72,29.95-.05,5.3-.76,5.7-6.06,6.46-10.52,1.81-10.62,2.59-22.12,4.05-32.93l1.96-14.53c-.52-.52-7.05.68-8.29,1.19ZM89.82,30.64c-1.78,5.27-.33,12-3.56,16.49h-17.45l2.08-17.91c.97.18,2.28-1.09,2.41-1.09h14.96c.38,0,1.77,1.67,1.56,2.51Z"/>
+    </svg>
     <div class="animation-container">
       <FrameAnimation {frames} frameRate={150} />
     </div>
@@ -324,7 +350,8 @@
 
       <section id="parking" class="content-section">
         <h2>parking</h2>
-        <img src={parking} alt="parking" class="parking-image" />
+        <img src={parking} alt="parking" class="parking-image parking-desktop" />
+        <img src={parkingMobile} alt="parking" class="parking-image parking-mobile" />
       </section>
 
       <section id="about" class="content-section">
@@ -372,6 +399,7 @@
     font-family: 'Inter', 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    isolation: isolate;
   }
 
   .sidebar {
@@ -413,6 +441,33 @@
 
   header img:hover {
     opacity: 0.8;
+  }
+
+  .logo-wrapper {
+    position: relative;
+    width: 80%;
+    cursor: pointer;
+  }
+
+  .logo-wrapper .logo-img {
+    width: 100%;
+    margin-bottom: 2.4vh;
+  }
+
+  .logo-invert-blend {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    fill: white;
+    mix-blend-mode: difference;
+    pointer-events: none;
+  }
+
+  .mobile-logo-blend {
+    display: none;
   }
 
   nav {
@@ -489,7 +544,8 @@
   }
 
   .content-section {
-    margin-bottom: 10vh;
+    /* margin-bottom: clamp(10rem, 3vw, 10rem); */
+    margin-bottom: 7vw;
   }
 
   .content-section:last-child {
@@ -498,7 +554,7 @@
 
   .content-section h2 {
     font-size: clamp(2.0rem, 4vw, 3.0rem);
-    margin-bottom: 1em;
+    margin-bottom: clamp(1.0rem, 2vw, 3.0rem);
     color: #111;
   }
 
@@ -553,7 +609,7 @@
 
   .day h3 {
     font-size: 1.5em;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.75em;
     color: #4a74c9;
   }
 
@@ -561,6 +617,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3em;
+    margin-left: 1rem;
   }
 
   .menu-column {
@@ -575,13 +632,13 @@
 
   .menu-category h3 {
     font-size: clamp(1.2rem, 2vw, 2.5rem);
-    margin-bottom: 1em;
+    margin-bottom: clamp(1.2rem, 2vw, 2.5rem);
     color: #4a74c9;
   }
 
   .menu-category.centered-category h3 {
     text-align: center;
-    margin-bottom: 0.5em;
+    margin-bottom: clamp(0.6rem, 1vw, 1.25rem);
   }
 
   .menu-category ul {
@@ -678,10 +735,14 @@
     margin-top: -3%;
   }
 
+  .parking-mobile {
+    display: none;
+  }
+
   .about-content p {
     font-size: clamp(1.0rem, 1.4vw, 1.5rem);
     line-height: 1.6;
-    margin-bottom: 1.5em;
+    margin-bottom: clamp(1.5rem, 2.1vw, 2.25rem);
     color: #333;
   }
 
@@ -732,23 +793,69 @@
 
   /* Responsive adjustments for smaller screens */
   @media (max-width: 950px) {
-    .nav-row {
-      font-size: 4vw;
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: auto;
+      height: auto;
+      padding: 2vh 3vw;
+      z-index: 100;
+      pointer-events: none;
+    }
+
+  .animation-container :global(.frame-container) {
+    transform: scale(0.85);
+  }
+
+    header {
+      pointer-events: auto;
+    }
+
+    .logo-wrapper {
+      display: none;
+    }
+
+    nav {
+      display: none;
+    }
+
+    .mobile-logo-blend {
+      display: block;
+      position: fixed;
+      top: 2vh;
+      width: 35vw;
+      max-width: 180px;
+      height: auto;
+      z-index: 100;
+      cursor: pointer;
+      mix-blend-mode: difference;
+    }
+
+    .content {
+      width: 100%;
+      padding-left: 3vw;
+      padding-right: 3vw;
     }
     
     .hours-grid {
-      grid-template-columns: 1fr;
       align-items: center;
+      gap: 1em;
     }
-    
+
+    .day h3 {
+      font-size: clamp(0.9rem, 3.5vw, 1.3rem);
+      white-space: nowrap;
+      margin-bottom: clamp(0.675rem, 2.625vw, 0.975rem);
+    }
+
     .hours-image {
-      order: -1;
-      align-items: center;
+      align-items: flex-end;
     }
     
     .hours-image img {
-      height: 200px;
-      margin-top: 0;
+      height: clamp(160px, 40vw, 280px);
+      margin-top: clamp(-80px, -15vw, -40px);
     }
     
     .menu-grid {
@@ -758,9 +865,28 @@
     .sections {
       max-width: 95%;
     }
-    
-    .content {
-      padding-left: 3vw;
+
+    .menu-category.centered-category h3 {
+      text-align: left;
+    }
+
+    .menu-category ul.centered-list {
+      width: 100%;
+      margin: 0;
+    }
+
+    .flavor-text {
+      text-align: left;
+      width: 100%;
+      margin: 0;
+    }
+
+    .parking-desktop {
+      display: none;
+    }
+
+    .parking-mobile {
+      display: block;
     }
   }
 </style>
