@@ -908,7 +908,7 @@
     .kitsvg-container {
       position: static;
       width: 15%;
-      margin: 0vh 0 9vh auto;
+      margin: 0vh 0 10vh auto;
       left: auto;
       bottom: auto;
     }
