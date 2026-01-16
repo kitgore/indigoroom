@@ -905,6 +905,14 @@
       min-height: 180px;
     }
 
+    .kitsvg-container {
+      position: static;
+      width: 15%;
+      margin: 1vh 0 7vh auto;
+      left: auto;
+      bottom: auto;
+    }
+
     .parking-desktop {
       display: none;
     }
