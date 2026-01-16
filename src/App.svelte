@@ -537,7 +537,7 @@
   }
 
   .sections {
-    padding: 5vh 0;
+    padding: 1vh 0;
     max-width: 90%;
     width: 100%;
     box-sizing: border-box;
@@ -908,7 +908,7 @@
     .kitsvg-container {
       position: static;
       width: 15%;
-      margin: 1vh 0 9vh auto;
+      margin: 0vh 0 9vh auto;
       left: auto;
       bottom: auto;
     }
