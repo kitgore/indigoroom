@@ -38,5 +38,5 @@ To deploy manually:
 1. Create a `gh-pages` branch if it doesn't exist
 2. Copy the contents of the `dist` directory to the root of the `gh-pages` branch
 3. Commit and push the changes
-
 The site will be available at `https://[your-username].github.io/indigoroom/`
+
