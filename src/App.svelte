@@ -780,6 +780,7 @@
     position: relative;
     left: 85%;
     bottom: 1%;
+    display: none;
   }
 
   /* .kitsvg-container{
@@ -901,8 +902,9 @@
       margin: 0;
     }
 
+    /* fluid min-height: narrower viewport → taller reservation so longest quote fits */
     .indigo-animation :global(.text-display) {
-      min-height: 180px;
+      min-height: clamp(140px, calc(140px + (950px - 100vw) * 0.3), 300px);
     }
 
     .kitsvg-container {
