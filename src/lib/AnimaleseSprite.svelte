@@ -129,6 +129,7 @@
       
       // Stop animation when audio ends
       audioElement.onended = () => {
+        displayedText = selectedText;
         stopAnimation();
       };
       
