@@ -104,6 +104,7 @@
                           name: 'menu',
                           file: 'src/content/menu.json',
                           fields: [
+                            { label: 'Flavor Text', name: 'flavorText', widget: 'text', required: false },
                             {
                               label: 'Menu Categories',
                               name: 'categories',
@@ -117,7 +118,8 @@
                                   fields: [
                                     { label: 'Item Name', name: 'name', widget: 'string' },
                                     { label: 'Description', name: 'description', widget: 'text', required: false },
-                                    { label: 'Price', name: 'price', widget: 'string', required: false }
+                                    { label: 'Small Price', name: 'smallprice', widget: 'string', required: false },
+                                    { label: 'Large Price', name: 'largeprice', widget: 'string', required: false }
                                   ]
                                 }
                               ]
@@ -143,6 +145,19 @@
                             { label: 'Contact Email', name: 'email', widget: 'string', required: false },
                             { label: 'Phone', name: 'phone', widget: 'string', required: false },
                             { label: 'Address', name: 'address', widget: 'text', required: false }
+                          ]
+                        },
+                        {
+                          label: 'Indigo Quotes',
+                          name: 'indigo-quotes',
+                          file: 'src/content/indigo-quotes.json',
+                          fields: [
+                            {
+                              label: 'Text Options',
+                              name: 'textBank',
+                              widget: 'list',
+                              field: { label: 'Text', name: 'text', widget: 'string' }
+                            }
                           ]
                         }
                       ]

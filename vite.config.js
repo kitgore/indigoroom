@@ -10,12 +10,10 @@ export default defineConfig({
     {
       name: 'copy-admin-files',
       writeBundle() {
-        // Copy admin files to dist folder
+        // copy admin entry to dist. config lives inline in admin.html — do not copy admin/config.yml
         try {
           mkdirSync('dist/admin', { recursive: true })
           copyFileSync('admin.html', 'dist/admin/index.html')
-          copyFileSync('admin/config.yml', 'dist/admin/config.yml')
-          // Try to copy _headers if it exists
           try {
             copyFileSync('admin/_headers', 'dist/admin/_headers')
           } catch (e) {
