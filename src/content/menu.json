@@ -1,5 +1,5 @@
 {
-  "flavorText": "vanilla, lavender, caramel, mocha, honey, agave, simple syrup",
+  "flavorText": "vanilla, condensed milk, caramel, mocha, honey, agave, simple syrup, earl grey",
   "categories": [
     {
       "name": "coffee",
@@ -54,13 +54,13 @@
         {
           "name": "matcha latte",
           "description": "",
-          "smallprice": "5.00",
-          "largeprice": "5.50"
+          "smallprice": "6.00",
+          "largeprice": "6.50"
         },
         {
           "name": "chai latte",
           "description": "",
-          "smallprice": "5.50",
+          "smallprice": "5.00",
           "largeprice": "5.50"
         },
         {
@@ -87,8 +87,8 @@
           "largeprice": "6.25"
         },
         {
-          "name": "honey carmamom latte",
-          "description": "honey, carmamom, espresso, milk",
+          "name": "honey cardamom latte",
+          "description": "honey, cardamom, espresso, milk",
           "smallprice": "5.50",
           "largeprice": "6.00"
         },
@@ -101,8 +101,8 @@
         {
           "name": "earl grey matcha",
           "description": "homemade earl grey syrup, matcha, milk",
-          "smallprice": "5.50",
-          "largeprice": "6.00"
+          "smallprice": "6.50",
+          "largeprice": "7.00"
         }
       ]
     },
@@ -118,8 +118,12 @@
         {
           "name": "oat milk",
           "description": "",
-          "smallprice": "0.75",
+          "smallprice": "0.50",
           "largeprice": ""
+        },
+        {
+          "name": "almond milk",
+          "smallprice": "0.50"
         },
         {
           "name": "1 shot",
@@ -132,6 +136,10 @@
           "description": "",
           "smallprice": "1.00",
           "largeprice": ""
+        },
+        {
+          "name": "cold foam",
+          "smallprice": "0.50"
         }
       ]
     }
